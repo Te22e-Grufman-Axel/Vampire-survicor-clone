@@ -1,0 +1,73 @@
+{
+  "enemies": [
+    {
+      "MaxHealth": 100,
+      "speed": 3.5,
+      "damage": 15,
+      "name": "Zombie",
+      "Damageresistance": 2,
+      "attackspeed": 1.2,
+      "attackRange": 2.0,
+      "aggression": 5,
+      "weaponstype": "Hand",
+      "color": { "x": 0.345, "y": 0.819, "z": 0.137 },
+      "size": 1
+    },
+    {
+      "MaxHealth": 50,
+      "speed": 5.0,
+      "damage": 45,
+      "name": "Sploder",
+      "Damageresistance": 2,
+      "attackspeed": 2,
+      "attackRange": 1,
+      "aggression": 1,
+      "weaponstype": "Explode",
+      "color": { "x": 0.909, "y": 0.760, "z": 0.007 },
+      "size": 1.5
+    },
+{
+      "MaxHealth": 150,
+      "speed": 3.5,
+      "damage": 20,
+      "name": "Spitter",
+      "Damageresistance": 3,
+      "attackspeed": 1.2,
+      "attackRange": 5,
+      "aggression": 3,
+      "weaponstype": "Spitting",
+      "color": { "x": 0.003, "y": 1, "z": 0.615 },
+      "size": 1
+    },
+{
+      "MaxHealth": 250,
+      "speed": 1.0,
+      "damage": 60,
+      "name": "Giant_zombie",
+      "Damageresistance": 10,
+      "attackspeed": 3.5,
+      "attackRange": 1.2,
+      "aggression": 2,
+      "weaponstype": "hand",
+      "color": { "x": 0.086, "y": 0.270, "z": 0.101 },
+      "size": 5
+    },
+{
+      "MaxHealth": 200,
+      "speed": 2.5,
+      "damage": 1,
+      "name": "Necromacer",
+      "Damageresistance": 4,
+      "attackspeed": 5,
+      "attackRange": 15,
+      "aggression": 4,
+      "weaponstype": "Necromacy",
+      "color": { "x": 0.380, "y": 0.003, "z": 0.003 },
+      "size": 1.5
+    }
+  ]
+}
+
+
+
+
