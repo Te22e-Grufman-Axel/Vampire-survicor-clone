@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.IO;
 
 public class CreateNewEnemys : MonoBehaviour
 {
@@ -44,16 +45,29 @@ public class CreateNewEnemys : MonoBehaviour
         float.TryParse(colorRInput.text, out r);
         float.TryParse(colorGInput.text, out g);
         float.TryParse(colorBInput.text, out b);
-        newEnemy.color = new Vector3(r/255, g/255, b/255);
+        newEnemy.color = new Vector3(r / 255, g / 255, b / 255);
         int.TryParse(sizeInput.text, out newEnemy.size);
 
-        string json = JsonUtility.ToJson(newEnemy, true);
 
-        // Save to file in persistent data path
-        string fileName = $"Enemy_{newEnemy.name}_{System.DateTime.Now:yyyyMMdd_HHmmss}.json";
-        string filePath = System.IO.Path.Combine(Application.persistentDataPath, fileName);
-        System.IO.File.WriteAllText(filePath, json);
+        string filePath = Path.Combine(Application.streamingAssetsPath, "enemyData.json");
+        EnemyDataList enemyList = new EnemyDataList();
 
-        Debug.Log($"Enemy data saved to: {filePath}");
+        if (File.Exists(filePath))
+        {
+            string json = File.ReadAllText(filePath);
+            enemyList = JsonUtility.FromJson<EnemyDataList>(json);
+            if (enemyList == null || enemyList.enemies == null)
+            {
+                enemyList = new EnemyDataList { enemies = new List<EnemyData>() };
+            }
+        }
+        else
+        {
+            enemyList.enemies = new List<EnemyData>();
+        }
+
+        enemyList.enemies.Add(newEnemy);
+        string newJson = JsonUtility.ToJson(enemyList, true);
+        File.WriteAllText(filePath, newJson);
     }
 }
