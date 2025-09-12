@@ -32,9 +32,6 @@ public class EnemySpawner : MonoBehaviour
         enemy.transform.localScale = Vector3.one * data.size;
     }
 
-    void Update()
-    {
-    }
 
     void SpawnRandomEnemy()
     {
@@ -44,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
         string randomType = keys[Random.Range(0, keys.Count)];
 
         Camera cam = Camera.main;
-        float margin = 4f; 
+        float margin = 4f;
 
         Vector3 min = cam.ViewportToWorldPoint(new Vector3(0, 0, cam.nearClipPlane));
         Vector3 max = cam.ViewportToWorldPoint(new Vector3(1, 1, cam.nearClipPlane));
