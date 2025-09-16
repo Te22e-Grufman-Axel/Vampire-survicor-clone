@@ -32,7 +32,6 @@ public class EnemySpawner : MonoBehaviour
         enemy.transform.localScale = Vector3.one * data.size;
     }
 
-
     void SpawnRandomEnemy()
     {
         if (enemyManager.enemyTypes.Count == 0) return;
