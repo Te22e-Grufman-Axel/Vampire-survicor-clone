@@ -17,7 +17,7 @@ public class HeroMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidbody.velocity = movementInput * moveSpeed;
+        GetComponent<Rigidbody>().linearVelocity = movementInput * moveSpeed;
     }
 
     private void OnMove(InputValue inputValue)
