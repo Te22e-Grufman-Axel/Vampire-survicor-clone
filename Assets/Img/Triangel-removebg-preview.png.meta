@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7076ade6964a38a4bae0cd8b18d3797a
+guid: 88471b81d4201d442860524f9456e1bf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3953693042805995107
-    second: Isometric diamond_0
+      213: -8500589974815584729
+    second: Triangel-removebg-preview_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Isometric diamond_0
+      name: Triangel-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 281
-        height: 269
+        x: 5
+        y: 5
+        width: 172
+        height: 151
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d998d980029a129c0800000000000000
-      internalID: -3953693042805995107
+      spriteID: 72eced9b476d70a80800000000000000
+      internalID: -8500589974815584729
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Isometric diamond_0: -3953693042805995107
+      Triangel-removebg-preview_0: -8500589974815584729
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

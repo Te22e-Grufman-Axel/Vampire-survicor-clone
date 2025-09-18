@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f5d003acccc0d724282bf2be0500f348
+guid: 88e0560a063e73447a18d8ea39ecd1f2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1191948292777702782
-    second: Hexagon point top_0
+      213: 3235501032778177902
+    second: Isometric_diamond-removebg-preview_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Hexagon point top_0
+      name: Isometric_diamond-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 274
-        height: 269
+        x: 11
+        y: 72
+        width: 253
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e75f5a538a6aa8010800000000000000
-      internalID: 1191948292777702782
+      spriteID: e6d17210c0fc6ec20800000000000000
+      internalID: 3235501032778177902
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Hexagon point top_0: 1191948292777702782
+      Isometric_diamond-removebg-preview_0: 3235501032778177902
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

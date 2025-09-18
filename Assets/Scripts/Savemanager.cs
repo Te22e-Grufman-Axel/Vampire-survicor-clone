@@ -6,15 +6,15 @@ using UnityEngine.Networking;
 using System.IO;
 using TMPro;
 
-
-public class ImageUploadMenu : MonoBehaviour
+public class Savemanager : MonoBehaviour
 {
+    private string userImagesPath;
+    private GalleryItem currentSelectedItem;
     public Transform contentParent;
     public GameObject galleryItemPrefab;
     public Button deleteSelectedButton;
 
-    private string userImagesPath;
-    private GalleryItem currentSelectedItem;
+    public EnemyManager EnemyManager;
 
     void Start()
     {
@@ -25,47 +25,6 @@ public class ImageUploadMenu : MonoBehaviour
         deleteSelectedButton.onClick.AddListener(DeleteSelected);
         LoadGallery();
     }
-    
-    public void OpenExplorer()
-    {
-#if UNITY_EDITOR
-        string path = UnityEditor.EditorUtility.OpenFilePanel("Choose a PNG", "", "png");
-        if (!string.IsNullOrEmpty(path))
-            StartCoroutine(LoadAndSaveImage(path));
-#endif
-    }
-
-   IEnumerator LoadAndSaveImage(string path)
-{
-    using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture("file:///" + path))
-    {
-        yield return uwr.SendWebRequest();
-
-        if (uwr.result == UnityWebRequest.Result.Success)
-        {
-            Texture2D tex = DownloadHandlerTexture.GetContent(uwr);
-            string fileName = Path.GetFileName(path);
-            string savePath = Path.Combine(userImagesPath, fileName);
-
-
-            byte[] pngData = tex.EncodeToPNG();
-
-
-            Task.Run(() =>
-            {
-                File.WriteAllBytes(savePath, pngData);
-            });
-
-            AddGalleryItem(savePath, tex);
-
-            Debug.Log("Saved to: " + savePath);
-        }
-        else
-        {
-            Debug.LogError("Failed to load: " + uwr.error);
-        }
-    }
-}
 
     void LoadGallery()
     {
@@ -73,8 +32,10 @@ public class ImageUploadMenu : MonoBehaviour
             Destroy(child.gameObject);
 
         string[] files = Directory.GetFiles(userImagesPath, "*.png");
-        foreach (string filePath in files)
-            StartCoroutine(LoadImageAsync(filePath));
+        // foreach (var data in EnemyManager.dataList )
+        // {
+        //     StartCoroutine(LoadImageAsync(data.filePath));
+        // }
     }
 
     IEnumerator LoadImageAsync(string filePath)
@@ -87,7 +48,6 @@ public class ImageUploadMenu : MonoBehaviour
                 AddGalleryItem(filePath, DownloadHandlerTexture.GetContent(uwr));
         }
     }
-
     void AddGalleryItem(string filePath, Texture2D tex)
     {
         GameObject entry = Instantiate(galleryItemPrefab, contentParent);
@@ -109,7 +69,6 @@ public class ImageUploadMenu : MonoBehaviour
 
         button.onClick.AddListener(() => SelectItem(item));
     }
-
 
     void SelectItem(GalleryItem item)
     {

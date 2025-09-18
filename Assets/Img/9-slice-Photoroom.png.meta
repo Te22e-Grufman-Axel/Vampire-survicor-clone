@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2323fbacc714e5643b534d4e38f89a42
+guid: de73e9ebe3c852342abe6687e13487e1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4247433437807493994
-    second: Triangel_0
+      213: -7665664185136374066
+    second: 9-slice-Photoroom_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Triangel_0
+      name: 9-slice-Photoroom_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 180
-        height: 184
+        x: 9
+        y: 8
+        width: 249
+        height: 249
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a63c1a3353ae1fa30800000000000000
-      internalID: 4247433437807493994
+      spriteID: ece138db9071e9590800000000000000
+      internalID: -7665664185136374066
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Triangel_0: 4247433437807493994
+      9-slice-Photoroom_0: -7665664185136374066
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,6 +13,10 @@ public class EnemyData
     public float attackRange;
     public int aggression;
     public string weaponstype;
+    public int rarity;
+    public bool PngOrColour;
+    public string pngName;
     public Vector3 color;
+    public int shape;
     public int size;
 }

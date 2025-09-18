@@ -16,11 +16,12 @@ public class CreateNewEnemys : MonoBehaviour
     public TMP_InputField attackRangeInput;
     public TMP_Dropdown aggressionDropdown;
     public TMP_Dropdown weaponstypeDropdown;
-    public TMP_InputField colorRInput;
-    public TMP_InputField colorGInput;
-    public TMP_InputField colorBInput;
+    public  TMP_Dropdown RarityDropdown;
+
     public TMP_InputField sizeInput;
     public Button createButton;
+
+    public ShapePicker shapePicker; 
 
     void Start()
     {
@@ -38,15 +39,23 @@ public class CreateNewEnemys : MonoBehaviour
         float.TryParse(attackSpeedInput.text, out newEnemy.attackspeed);
         float.TryParse(attackRangeInput.text, out newEnemy.attackRange);
 
+
         newEnemy.aggression = aggressionDropdown.value;
         newEnemy.weaponstype = weaponstypeDropdown.options[weaponstypeDropdown.value].text;
+        newEnemy.rarity = RarityDropdown.value;
 
-        float r = 0, g = 0, b = 0;
-        float.TryParse(colorRInput.text, out r);
-        float.TryParse(colorGInput.text, out g);
-        float.TryParse(colorBInput.text, out b);
+        newEnemy.PngOrColour = (shapePicker.GetSelectedButtonId() == 0) ? false : true;
+        newEnemy.shape = shapePicker.GetSelectedButtonId();
+
+        float r = 1, g = 1, b = 1;
+        // float.TryParse(colorRInput.text, out r);
+        // float.TryParse(colorGInput.text, out g);
+        // float.TryParse(colorBInput.text, out b);
         newEnemy.color = new Vector3(r / 255, g / 255, b / 255);
         int.TryParse(sizeInput.text, out newEnemy.size);
+
+
+
 
 
         string filePath = Path.Combine(Application.streamingAssetsPath, "enemyData.json");
