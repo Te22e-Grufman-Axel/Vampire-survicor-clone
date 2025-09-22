@@ -25,7 +25,7 @@ public class ImageUploadMenu : MonoBehaviour
         deleteSelectedButton.onClick.AddListener(DeleteSelected);
         LoadGallery();
     }
-    
+
     public void OpenExplorer()
     {
 #if UNITY_EDITOR
@@ -35,37 +35,37 @@ public class ImageUploadMenu : MonoBehaviour
 #endif
     }
 
-   IEnumerator LoadAndSaveImage(string path)
-{
-    using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture("file:///" + path))
+    IEnumerator LoadAndSaveImage(string path)
     {
-        yield return uwr.SendWebRequest();
-
-        if (uwr.result == UnityWebRequest.Result.Success)
+        using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture("file:///" + path))
         {
-            Texture2D tex = DownloadHandlerTexture.GetContent(uwr);
-            string fileName = Path.GetFileName(path);
-            string savePath = Path.Combine(userImagesPath, fileName);
+            yield return uwr.SendWebRequest();
 
-
-            byte[] pngData = tex.EncodeToPNG();
-
-
-            Task.Run(() =>
+            if (uwr.result == UnityWebRequest.Result.Success)
             {
-                File.WriteAllBytes(savePath, pngData);
-            });
+                Texture2D tex = DownloadHandlerTexture.GetContent(uwr);
+                string fileName = Path.GetFileName(path);
+                string savePath = Path.Combine(userImagesPath, fileName);
 
-            AddGalleryItem(savePath, tex);
 
-            Debug.Log("Saved to: " + savePath);
-        }
-        else
-        {
-            Debug.LogError("Failed to load: " + uwr.error);
+                byte[] pngData = tex.EncodeToPNG();
+
+
+                Task.Run(() =>
+                {
+                    File.WriteAllBytes(savePath, pngData);
+                });
+
+                AddGalleryItem(savePath, tex);
+
+                Debug.Log("Saved to: " + savePath);
+            }
+            else
+            {
+                Debug.LogError("Failed to load: " + uwr.error);
+            }
         }
     }
-}
 
     void LoadGallery()
     {
@@ -137,5 +137,11 @@ public class ImageUploadMenu : MonoBehaviour
         public string filePath;
         public Button button;
         public Image background;
+    }
+        public string GetSelectedImageName()
+    {
+        if (currentSelectedItem != null)
+            return Path.GetFileName(currentSelectedItem.filePath);
+        return "";
     }
 }

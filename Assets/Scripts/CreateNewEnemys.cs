@@ -16,13 +16,13 @@ public class CreateNewEnemys : MonoBehaviour
     public TMP_InputField attackRangeInput;
     public TMP_Dropdown aggressionDropdown;
     public TMP_Dropdown weaponstypeDropdown;
-    public  TMP_Dropdown RarityDropdown;
+    public TMP_Dropdown RarityDropdown;
 
     public TMP_InputField sizeInput;
     public Button createButton;
 
-    public ShapePicker shapePicker; 
-
+    public ShapePicker shapePicker;
+    public ImageUploadMenu imageUploadMenu;
     void Start()
     {
         createButton.onClick.AddListener(CreateEnemyFromInput);
@@ -48,10 +48,20 @@ public class CreateNewEnemys : MonoBehaviour
         newEnemy.shape = shapePicker.GetSelectedButtonId();
 
         float r = 1, g = 1, b = 1;
-        // float.TryParse(colorRInput.text, out r);
-        // float.TryParse(colorGInput.text, out g);
-        // float.TryParse(colorBInput.text, out b);
-        newEnemy.color = new Vector3(r / 255, g / 255, b / 255);
+        if (newEnemy.PngOrColour)
+        {
+            Color color = FindObjectOfType<ColourPickerControll>().GetCurrentColor();
+            r = color.r;
+            g = color.g;
+            b = color.b;
+            newEnemy.pngName = ""; // No PNG for shapes
+        }
+        else
+        {
+            // Get selected image name from ImageUploadMenu
+            newEnemy.pngName = imageUploadMenu.GetSelectedImageName();
+        }
+        newEnemy.color = new Vector3(r, g, b);
         int.TryParse(sizeInput.text, out newEnemy.size);
 
 

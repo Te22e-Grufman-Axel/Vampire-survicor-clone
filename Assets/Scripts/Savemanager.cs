@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
@@ -8,21 +8,25 @@ using TMPro;
 
 public class Savemanager : MonoBehaviour
 {
-    private string userImagesPath;
-    private GalleryItem currentSelectedItem;
     public Transform contentParent;
     public GameObject galleryItemPrefab;
     public Button deleteSelectedButton;
+    public Button saveAsNewButton;
+    public Button saveButton;
 
-    public EnemyManager EnemyManager;
+    public string enemyDataPath;
+    public List<Texture2D> shapeTextures; // Assign shape images in inspector
+
+    private EnemyDataList enemyList;
+    private int currentSelectedIndex = -1;
 
     void Start()
     {
-        userImagesPath = Path.Combine(Application.persistentDataPath, "UserImages");
-        if (!Directory.Exists(userImagesPath))
-            Directory.CreateDirectory(userImagesPath);
-
+        enemyDataPath = Path.Combine(Application.streamingAssetsPath, "enemyData.json");
         deleteSelectedButton.onClick.AddListener(DeleteSelected);
+        saveAsNewButton.onClick.AddListener(SaveAsNew);
+        saveButton.onClick.AddListener(SaveCurrent);
+
         LoadGallery();
     }
 
@@ -31,70 +35,125 @@ public class Savemanager : MonoBehaviour
         foreach (Transform child in contentParent)
             Destroy(child.gameObject);
 
-        string[] files = Directory.GetFiles(userImagesPath, "*.png");
-        // foreach (var data in EnemyManager.dataList )
-        // {
-        //     StartCoroutine(LoadImageAsync(data.filePath));
-        // }
-    }
+        enemyList = LoadEnemyList();
 
-    IEnumerator LoadImageAsync(string filePath)
-    {
-        using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture("file:///" + filePath))
+        for (int i = 0; i < enemyList.enemies.Count; i++)
         {
-            yield return uwr.SendWebRequest();
-
-            if (uwr.result == UnityWebRequest.Result.Success)
-                AddGalleryItem(filePath, DownloadHandlerTexture.GetContent(uwr));
+            AddGalleryItem(enemyList.enemies[i], i);
         }
     }
-    void AddGalleryItem(string filePath, Texture2D tex)
+
+    EnemyDataList LoadEnemyList()
+    {
+        if (!File.Exists(enemyDataPath))
+            return new EnemyDataList { enemies = new List<EnemyData>() };
+
+        string json = File.ReadAllText(enemyDataPath);
+        var list = JsonUtility.FromJson<EnemyDataList>(json);
+        if (list == null || list.enemies == null)
+            list = new EnemyDataList { enemies = new List<EnemyData>() };
+        return list;
+    }
+
+    void AddGalleryItem(EnemyData data, int index)
     {
         GameObject entry = Instantiate(galleryItemPrefab, contentParent);
-
         Button button = entry.GetComponent<Button>();
         RawImage img = entry.GetComponentInChildren<RawImage>();
         TMP_Text label = entry.GetComponentInChildren<TMP_Text>();
         Image background = entry.GetComponent<Image>();
 
-        img.texture = tex;
-        label.text = Path.GetFileName(filePath);
+        label.text = data.name;
 
-        GalleryItem item = new GalleryItem
+        if (!data.PngOrColour)
         {
-            filePath = filePath,
-            button = button,
-            background = background
-        };
+            // PNG mode
+            string appDataPath = Path.Combine(
+                Application.persistentDataPath, "UserImages"
+            );
+            string pngPath = Path.Combine(appDataPath, data.pngName);
+            StartCoroutine(LoadPngImage(pngPath, img));
+        }
+        else
+        {
+            // Shape + Color mode
+            int shapeId = data.shape;
+            if (shapeId >= 0 && shapeId < shapeTextures.Count)
+            {
+                img.texture = shapeTextures[shapeId];
+                img.color = new Color(data.color.x, data.color.y, data.color.z, 1f);
+            }
+        }
 
-        button.onClick.AddListener(() => SelectItem(item));
+        button.onClick.AddListener(() => SelectItem(index, background));
+        background.color = Color.white;
     }
 
-    void SelectItem(GalleryItem item)
+    IEnumerator LoadPngImage(string filePath, RawImage img)
     {
-        if (currentSelectedItem != null && currentSelectedItem.background != null)
-            currentSelectedItem.background.color = Color.white;
+        if (!File.Exists(filePath))
+        {
+            Debug.LogWarning("PNG file not found: " + filePath);
+            yield break;
+        }
+        using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture("file:///" + filePath))
+        {
+            yield return uwr.SendWebRequest();
+            if (uwr.result == UnityWebRequest.Result.Success)
+                img.texture = DownloadHandlerTexture.GetContent(uwr);
+            else
+                Debug.LogError("Failed to load PNG: " + uwr.error);
+        }
+    }
 
-        currentSelectedItem = item;
-        if (item.background != null)
-            item.background.color = Color.green;
+    void SelectItem(int index, Image background)
+    {
+        // Deselect previous
+        foreach (Transform child in contentParent)
+        {
+            var img = child.GetComponent<Image>();
+            if (img) img.color = Color.white;
+        }
+        currentSelectedIndex = index;
+        background.color = Color.green;
     }
 
     void DeleteSelected()
     {
-        if (currentSelectedItem == null) return;
-
-        if (File.Exists(currentSelectedItem.filePath))
-            File.Delete(currentSelectedItem.filePath);
-
-        Destroy(currentSelectedItem.button.gameObject);
-        currentSelectedItem = null;
+        if (currentSelectedIndex < 0 || currentSelectedIndex >= enemyList.enemies.Count) return;
+        enemyList.enemies.RemoveAt(currentSelectedIndex);
+        SaveEnemyList();
+        LoadGallery();
+        currentSelectedIndex = -1;
     }
 
-    private class GalleryItem
+    void SaveAsNew()
     {
-        public string filePath;
-        public Button button;
-        public Image background;
+        // You need to get new enemy data from your input UI
+        EnemyData newEnemy = GetEnemyDataFromInput();
+        enemyList.enemies.Add(newEnemy);
+        SaveEnemyList();
+        LoadGallery();
+    }
+
+    void SaveCurrent()
+    {
+        if (currentSelectedIndex < 0 || currentSelectedIndex >= enemyList.enemies.Count) return;
+        EnemyData updatedEnemy = GetEnemyDataFromInput();
+        enemyList.enemies[currentSelectedIndex] = updatedEnemy;
+        SaveEnemyList();
+        LoadGallery();
+    }
+
+    void SaveEnemyList()
+    {
+        string json = JsonUtility.ToJson(enemyList, true);
+        File.WriteAllText(enemyDataPath, json);
+    }
+
+    EnemyData GetEnemyDataFromInput()
+    {
+        return new EnemyData { name = "New Enemy", PngOrColour = false, pngName = "", shape = 0, color = Vector3.one };
     }
 }
+

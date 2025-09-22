@@ -130,21 +130,25 @@ public class ColourPickerControll : MonoBehaviour
     }
 
 
-public void OnTextInput()
-{
-    if (hexInputfield.text.Length < 6) { return; }
-
-    Color newcol;
-
-    if (ColorUtility.TryParseHtmlString("#" + hexInputfield.text, out newcol))
+    public void OnTextInput()
     {
-        Color.RGBToHSV(newcol, out CurentHue, out CurentSaturation, out CurentValue);
+        if (hexInputfield.text.Length < 6) { return; }
 
-        hueSlider.value = CurentHue;
+        Color newcol;
 
-        hexInputfield.text = "";
+        if (ColorUtility.TryParseHtmlString("#" + hexInputfield.text, out newcol))
+        {
+            Color.RGBToHSV(newcol, out CurentHue, out CurentSaturation, out CurentValue);
 
-        UpdateOutputImage();
+            hueSlider.value = CurentHue;
+
+            hexInputfield.text = "";
+
+            UpdateOutputImage();
+        }
     }
-}
+    public Color GetCurrentColor()
+    {
+       return Color.HSVToRGB(CurentHue, CurentSaturation, CurentValue);
+    }
 }

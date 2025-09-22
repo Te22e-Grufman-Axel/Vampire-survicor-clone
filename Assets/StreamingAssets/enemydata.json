@@ -11,7 +11,7 @@
             "aggression": 5,
             "weaponstype": "Hand",
             "rarity": 1,
-            "PngOrColour": false,
+            "PngOrColour": true,
             "pngName": "",
             "color": {
                 "x": 0.3449999988079071,
@@ -32,7 +32,7 @@
             "aggression": 1,
             "weaponstype": "Explode",
             "rarity": 3,
-            "PngOrColour": false,
+            "PngOrColour": true,
             "pngName": "",
             "color": {
                 "x": 0.9089999794960022,
@@ -53,7 +53,7 @@
             "aggression": 3,
             "weaponstype": "Spitting",
             "rarity": 2,
-            "PngOrColour": false,
+            "PngOrColour": true,
             "pngName": "",
             "color": {
                 "x": 0.003000000026077032,
@@ -74,7 +74,7 @@
             "aggression": 2,
             "weaponstype": "hand",
             "rarity": 3,
-            "PngOrColour": false,
+            "PngOrColour": true,
             "pngName": "",
             "color": {
                 "x": 0.0860000029206276,
@@ -95,7 +95,7 @@
             "aggression": 4,
             "weaponstype": "Necromacy",
             "rarity": 4,
-            "PngOrColour": false,
+            "PngOrColour": true,
             "pngName": "",
             "color": {
                 "x": 0.3799999952316284,
@@ -104,6 +104,27 @@
             },
             "shape": 0,
             "size": 1
+        },
+        {
+            "MaxHealth": 321,
+            "speed": 231.0,
+            "damage": 321,
+            "name": "test",
+            "Damageresistance": 321,
+            "attackspeed": 231.0,
+            "attackRange": 321.0,
+            "aggression": 1,
+            "weaponstype": "Melee",
+            "rarity": 6,
+            "PngOrColour": false,
+            "pngName": "",
+            "color": {
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
+            },
+            "shape": 0,
+            "size": 321
         }
     ]
 }

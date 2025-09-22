@@ -35,9 +35,5 @@ public class EnemyManager : MonoBehaviour
     }
 }
 
-[System.Serializable]
-public class EnemyDataList
-{
-    public List<EnemyData> enemies;
-}
+
 
