@@ -5,7 +5,7 @@ using System.IO;
 
 public class EnemyManager : MonoBehaviour
 {
-    public GameObject enemyPrefab; 
+    public GameObject enemyPrefab;
     public Dictionary<string, EnemyData> enemyTypes = new Dictionary<string, EnemyData>();
 
     void Awake()
@@ -33,6 +33,8 @@ public class EnemyManager : MonoBehaviour
             return data;
         return null;
     }
+
+
 }
 
 

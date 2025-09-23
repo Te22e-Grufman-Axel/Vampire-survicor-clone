@@ -14,8 +14,9 @@ public class Savemanager : MonoBehaviour
     public Button saveAsNewButton;
     public Button saveButton;
 
-    public string enemyDataPath;
-    public List<Texture2D> shapeTextures; // Assign shape images in inspector
+    private string enemyDataPath;
+    public List<Texture2D> shapeTextures;
+    public PreviewManager previewManager;
 
     private EnemyDataList enemyList;
     private int currentSelectedIndex = -1;
@@ -41,6 +42,7 @@ public class Savemanager : MonoBehaviour
         {
             AddGalleryItem(enemyList.enemies[i], i);
         }
+        Debug.Log("Gallery loaded with " + enemyList.enemies.Count + " items.");
     }
 
     EnemyDataList LoadEnemyList()
@@ -96,7 +98,8 @@ public class Savemanager : MonoBehaviour
             Debug.LogWarning("PNG file not found: " + filePath);
             yield break;
         }
-        using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture("file:///" + filePath))
+        string urlPath = "file:///" + filePath.Replace("\\", "/");
+        using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(urlPath))
         {
             yield return uwr.SendWebRequest();
             if (uwr.result == UnityWebRequest.Result.Success)
@@ -108,7 +111,6 @@ public class Savemanager : MonoBehaviour
 
     void SelectItem(int index, Image background)
     {
-        // Deselect previous
         foreach (Transform child in contentParent)
         {
             var img = child.GetComponent<Image>();
@@ -116,6 +118,11 @@ public class Savemanager : MonoBehaviour
         }
         currentSelectedIndex = index;
         background.color = Color.green;
+
+        if (index >= 0 && index < enemyList.enemies.Count)
+            previewManager.ShowPreview(enemyList.enemies[index]);
+        else
+            previewManager.ShowPreview(null);
     }
 
     void DeleteSelected()
@@ -123,16 +130,17 @@ public class Savemanager : MonoBehaviour
         if (currentSelectedIndex < 0 || currentSelectedIndex >= enemyList.enemies.Count) return;
         enemyList.enemies.RemoveAt(currentSelectedIndex);
         SaveEnemyList();
+        Debug.Log("Deleted enemy at index: " + currentSelectedIndex);
         LoadGallery();
         currentSelectedIndex = -1;
     }
 
     void SaveAsNew()
     {
-        // You need to get new enemy data from your input UI
         EnemyData newEnemy = GetEnemyDataFromInput();
         enemyList.enemies.Add(newEnemy);
         SaveEnemyList();
+        Debug.Log("Saved new enemy: " + newEnemy.name);
         LoadGallery();
     }
 
@@ -142,6 +150,7 @@ public class Savemanager : MonoBehaviour
         EnemyData updatedEnemy = GetEnemyDataFromInput();
         enemyList.enemies[currentSelectedIndex] = updatedEnemy;
         SaveEnemyList();
+        Debug.Log("Saved changes to enemy: " + updatedEnemy.name);
         LoadGallery();
     }
 
@@ -149,6 +158,7 @@ public class Savemanager : MonoBehaviour
     {
         string json = JsonUtility.ToJson(enemyList, true);
         File.WriteAllText(enemyDataPath, json);
+        Debug.Log("Enemy data saved to " + enemyDataPath);
     }
 
     EnemyData GetEnemyDataFromInput()

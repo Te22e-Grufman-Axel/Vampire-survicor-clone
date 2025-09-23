@@ -104,27 +104,6 @@
             },
             "shape": 0,
             "size": 1
-        },
-        {
-            "MaxHealth": 321,
-            "speed": 231.0,
-            "damage": 321,
-            "name": "test",
-            "Damageresistance": 321,
-            "attackspeed": 231.0,
-            "attackRange": 321.0,
-            "aggression": 1,
-            "weaponstype": "Melee",
-            "rarity": 6,
-            "PngOrColour": false,
-            "pngName": "",
-            "color": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            },
-            "shape": 0,
-            "size": 321
         }
     ]
 }

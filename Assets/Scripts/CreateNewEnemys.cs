@@ -58,7 +58,6 @@ public class CreateNewEnemys : MonoBehaviour
         }
         else
         {
-            // Get selected image name from ImageUploadMenu
             newEnemy.pngName = imageUploadMenu.GetSelectedImageName();
         }
         newEnemy.color = new Vector3(r, g, b);

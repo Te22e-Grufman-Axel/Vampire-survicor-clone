@@ -34,14 +34,7 @@ public class EnemySpawner : MonoBehaviour
         enemy.GetComponent<Renderer>().material.color = new Color(data.color.x, data.color.y, data.color.z);
         enemy.transform.localScale = Vector3.one * data.size;
     }
-    void Update()
-    {
-        for (int i = 0; i < 100000000000000000; i++)
-        {
-            SpawnRandomEnemy();
-            spawnamound++;
-        }
-    }
+ 
     void SpawnRandomEnemy()
     {
         if (enemyManager.enemyTypes.Count == 0) return;
