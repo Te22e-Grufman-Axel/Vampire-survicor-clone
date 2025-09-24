@@ -41,25 +41,18 @@ public class EnemyAttack : MonoBehaviour
 
     void PerformMeleeAttack()
     {
-        if (distance <= attackRange)
-        {
-            
-        }
             Debug.Log("Performing Melee Attack with damage: " + damage);
     }
     void PerformExplodeAttack()
     {
-        // Implement ranged attack logic here
         Debug.Log("Performing Ranged Attack with damage: " + damage);
     }
     void PerformSpittingAttack()
     {
-        // Implement spitting attack logic here
         Debug.Log("Performing Spitting Attack with damage: " + damage);
     }
     void PerformNecromacyAttack()
     {
-        // Implement necromacy attack logic here
         Debug.Log("Performing Necromacy Attack with damage: " + damage);
     }
 }

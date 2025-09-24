@@ -34,13 +34,9 @@ public class EnemySpawner : MonoBehaviour
         enemy.GetComponent<Renderer>().material.color = new Color(data.color.x, data.color.y, data.color.z);
         enemy.transform.localScale = Vector3.one * data.size;
     }
- 
-    void SpawnRandomEnemy()
-    {
-        if (enemyManager.enemyTypes.Count == 0) return;
 
-        List<string> keys = new List<string>(enemyManager.enemyTypes.Keys);
-        string randomType = keys[Random.Range(0, keys.Count)];
+    Vector3 SpawnEnemyPos()
+    {
 
         Camera cam = Camera.main;
         float margin = 4f;
@@ -71,6 +67,21 @@ public class EnemySpawner : MonoBehaviour
         }
         spawnPos.z = 0;
 
-        SpawnEnemy(randomType, spawnPos);
+        return spawnPos;
+    }
+
+    int timer = 0;
+    void fixedUpdate()
+    {
+        timer++;
+        if (timer >= 60)
+        {
+            timer = 0;
+            if (spawnamound < 20)
+            {
+                SpawnEnemy("Goblin", SpawnEnemyPos());
+                spawnamound++;
+            }
+        }
     }
 }
