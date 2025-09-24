@@ -13,7 +13,7 @@ public class SelectMenu : MonoBehaviour
     [Header("Design Mode Subpanels")]
     [SerializeField] private GameObject pngPanel;
     [SerializeField] private GameObject shapeColourPanel;
-    [SerializeField] private Toggle pngToggle; 
+    [SerializeField] private Toggle pngToggle;
 
     [Header("Shape & Colour Subpanels")]
     [SerializeField] private GameObject colourPickerPanel;
@@ -66,5 +66,9 @@ public class SelectMenu : MonoBehaviour
     {
         colourPickerPanel.SetActive(showColour);
         shapePickerPanel.SetActive(!showColour);
+    }
+    public int GetSelectedOption()
+    {
+        return pngToggle.isOn ? 0 : 1; // 0 for PNG, 1 for Shape + Colour
     }
 }

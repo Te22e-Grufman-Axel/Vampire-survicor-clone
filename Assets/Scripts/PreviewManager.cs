@@ -48,6 +48,7 @@ public class PreviewManager : MonoBehaviour
             );
             string pngPath = Path.Combine(appDataPath, data.pngName);
             StartCoroutine(LoadPngImage(pngPath, previewImage));
+            previewImage.color = new Color(1f, 1f, 1f, 1f);
         }
         else
         {

@@ -49,7 +49,6 @@ public class ShapePicker : MonoBehaviour
 
     public int GetSelectedButtonId()
     {
-        return selectedIndex == -1 ? 0 : selectedIndex + 1;
-        //retunrs 0 if no button is selected, otherwise returns the index + 1
+        return selectedIndex == -1 ? 0 : selectedIndex;
     }
 }

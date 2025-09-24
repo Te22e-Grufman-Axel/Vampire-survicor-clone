@@ -17,9 +17,11 @@ public class Savemanager : MonoBehaviour
     private string enemyDataPath;
     public List<Texture2D> shapeTextures;
     public PreviewManager previewManager;
+    public CreateNewEnemys createNewEnemys;
 
     private EnemyDataList enemyList;
     private int currentSelectedIndex = -1;
+    private int copynumber = 1;
 
     void Start()
     {
@@ -42,7 +44,6 @@ public class Savemanager : MonoBehaviour
         {
             AddGalleryItem(enemyList.enemies[i], i);
         }
-        Debug.Log("Gallery loaded with " + enemyList.enemies.Count + " items.");
     }
 
     EnemyDataList LoadEnemyList()
@@ -130,7 +131,6 @@ public class Savemanager : MonoBehaviour
         if (currentSelectedIndex < 0 || currentSelectedIndex >= enemyList.enemies.Count) return;
         enemyList.enemies.RemoveAt(currentSelectedIndex);
         SaveEnemyList();
-        Debug.Log("Deleted enemy at index: " + currentSelectedIndex);
         LoadGallery();
         currentSelectedIndex = -1;
     }
@@ -138,19 +138,27 @@ public class Savemanager : MonoBehaviour
     void SaveAsNew()
     {
         EnemyData newEnemy = GetEnemyDataFromInput();
+        newEnemy.name = StopSameName(newEnemy.name);
         enemyList.enemies.Add(newEnemy);
         SaveEnemyList();
-        Debug.Log("Saved new enemy: " + newEnemy.name);
         LoadGallery();
     }
 
     void SaveCurrent()
     {
-        if (currentSelectedIndex < 0 || currentSelectedIndex >= enemyList.enemies.Count) return;
         EnemyData updatedEnemy = GetEnemyDataFromInput();
-        enemyList.enemies[currentSelectedIndex] = updatedEnemy;
+
+        if (currentSelectedIndex < 0 || currentSelectedIndex >= enemyList.enemies.Count)
+        {
+            SaveAsNew();
+        }
+        else
+        {
+            updatedEnemy.name = StopSameName(updatedEnemy.name);
+            enemyList.enemies[currentSelectedIndex] = updatedEnemy;
+        }
+
         SaveEnemyList();
-        Debug.Log("Saved changes to enemy: " + updatedEnemy.name);
         LoadGallery();
     }
 
@@ -158,12 +166,27 @@ public class Savemanager : MonoBehaviour
     {
         string json = JsonUtility.ToJson(enemyList, true);
         File.WriteAllText(enemyDataPath, json);
-        Debug.Log("Enemy data saved to " + enemyDataPath);
     }
 
     EnemyData GetEnemyDataFromInput()
     {
-        return new EnemyData { name = "New Enemy", PngOrColour = false, pngName = "", shape = 0, color = Vector3.one };
+        if (createNewEnemys != null)
+            return createNewEnemys.GetEnemyDataFromInputFields();
+        else
+            return null;
+    }
+    string StopSameName(string name)
+    {
+        foreach (var enemy in enemyList.enemies)
+        {
+            if (enemy.name == name)
+            {
+                name = name + "_" + copynumber;
+                copynumber++;
+                return name;
+            }
+        }
+        return name;
     }
 }
 

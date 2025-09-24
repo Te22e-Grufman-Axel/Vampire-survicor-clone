@@ -3075,7 +3075,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 426, y: 526}
+  m_AnchoredPosition: {x: 426, y: 438}
   m_SizeDelta: {x: 400, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &345762664
@@ -5265,6 +5265,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 49afeb1f202e5194a85ab2af2434784f, type: 3}
   - {fileID: 2800000, guid: de73e9ebe3c852342abe6687e13487e1, type: 3}
   previewManager: {fileID: 1325448464}
+  createNewEnemys: {fileID: 1344183878}
 --- !u!4 &656657656
 Transform:
   m_ObjectHideFlags: 0
@@ -11412,9 +11413,10 @@ MonoBehaviour:
   weaponstypeDropdown: {fileID: 1687120906}
   RarityDropdown: {fileID: 526659280}
   sizeInput: {fileID: 943337437}
-  createButton: {fileID: 1595496967}
   shapePicker: {fileID: 540591052}
   imageUploadMenu: {fileID: 762429266}
+  colourPicker: {fileID: 111590589}
+  SelectMeny: {fileID: 598653921}
 --- !u!4 &1344183879
 Transform:
   m_ObjectHideFlags: 0
@@ -15209,7 +15211,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 5.252617}
+  m_AnchoredPosition: {x: 0, y: -0.000019854553}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1664920836
@@ -20041,7 +20043,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 504573947}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9842297
+  m_Size: 0.99999106
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
