@@ -33,8 +33,6 @@ public class EnemyManager : MonoBehaviour
             return data;
         return null;
     }
-
-
 }
 
 
