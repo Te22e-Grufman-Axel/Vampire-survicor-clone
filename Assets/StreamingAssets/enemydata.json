@@ -8,8 +8,8 @@
             "Damageresistance": 2,
             "attackspeed": 1.2000000476837159,
             "attackRange": 2.0,
-            "aggression": 5,
-            "weaponstype": "Hand",
+            "aggression": 2,
+            "weaponstype": "Melee",
             "rarity": 1,
             "PngOrColour": true,
             "pngName": "",
@@ -72,7 +72,7 @@
             "attackspeed": 3.5,
             "attackRange": 1.2000000476837159,
             "aggression": 2,
-            "weaponstype": "hand",
+            "weaponstype": "Melee",
             "rarity": 3,
             "PngOrColour": true,
             "pngName": "",
@@ -106,25 +106,25 @@
             "size": 1
         },
         {
-            "MaxHealth": 213,
-            "speed": 312.0,
-            "damage": 312,
-            "name": "bob_1",
+            "MaxHealth": 312,
+            "speed": 132.0,
+            "damage": 123312,
+            "name": "test_1",
             "Damageresistance": 123,
-            "attackspeed": 312.0,
-            "attackRange": 132.0,
-            "aggression": 2,
-            "weaponstype": "Necromancy",
-            "rarity": 9,
-            "PngOrColour": true,
-            "pngName": "",
+            "attackspeed": 123.0,
+            "attackRange": 11.0,
+            "aggression": 1,
+            "weaponstype": "Spitting acid",
+            "rarity": 1,
+            "PngOrColour": false,
+            "pngName": "istockphoto-166762468-612x612.png",
             "color": {
-                "x": 0.8004306554794312,
-                "y": 0.07765594869852066,
-                "z": 0.2543565630912781
+                "x": 1.0,
+                "y": 1.0,
+                "z": 1.0
             },
-            "shape": 5,
-            "size": 312
+            "shape": 0,
+            "size": 11
         }
     ]
 }

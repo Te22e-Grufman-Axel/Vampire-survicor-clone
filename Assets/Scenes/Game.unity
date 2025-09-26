@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 638bfdb3fa884414da401bbb1cc99ff8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 4748237719874236047, guid: 5a199e43a694f1c44b8d1a93510bfb75, type: 3}
 --- !u!4 &32461732
 Transform:
   m_ObjectHideFlags: 0
@@ -450,7 +450,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 32461731}
-  spawnamound: 0
 --- !u!4 &1647144850
 Transform:
   m_ObjectHideFlags: 0
@@ -478,8 +477,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec35d7a263b27694d85d7130a3b21b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  enemySpawner: {fileID: 0}
-  enemyManager: {fileID: 0}
+  enemySpawner: {fileID: 1647144849}
+  enemyManager: {fileID: 32461731}
+  spawnInterval: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

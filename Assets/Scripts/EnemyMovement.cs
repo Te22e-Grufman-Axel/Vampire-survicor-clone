@@ -11,6 +11,10 @@ public class EnemyMovement : MonoBehaviour
 
     public string weaponType;
 
+        void Start()
+        {
+                hero = FindObjectOfType<HeroMovement>().transform;
+        }
     void Update()
     {
         switch (aggression)

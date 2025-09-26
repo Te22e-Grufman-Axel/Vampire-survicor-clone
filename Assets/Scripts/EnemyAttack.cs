@@ -11,6 +11,12 @@ public class EnemyAttack : MonoBehaviour
     public float attackRange;
     public string weaponType;
     private float distance;
+    void Start()
+    {
+        hero = FindObjectOfType<HeroMovement>().transform;
+    }
+
+
 
     void Update()
     {
@@ -41,7 +47,7 @@ public class EnemyAttack : MonoBehaviour
 
     void PerformMeleeAttack()
     {
-            Debug.Log("Performing Melee Attack with damage: " + damage);
+        Debug.Log("Performing Melee Attack with damage: " + damage);
     }
     void PerformExplodeAttack()
     {

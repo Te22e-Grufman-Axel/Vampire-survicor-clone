@@ -8,13 +8,12 @@ using TMPro;
 public class EnemySpawner : MonoBehaviour
 {
     public EnemyManager enemyManager;
-    public int spawnamound = 0;
-    public void SpawnEnemy(string enemyType, Vector3 position)
+    public void SpawnEnemy(string enemyType)
     {
         EnemyData data = enemyManager.GetEnemyData(enemyType);
         if (data == null) return;
 
-        GameObject enemy = Instantiate(enemyManager.enemyPrefab, position, Quaternion.identity);
+        GameObject enemy = Instantiate(enemyManager.enemyPrefab, SpawnEnemyPos(), Quaternion.identity);
 
         var enemyHealth = enemy.GetComponent<EnemyHealth>();
         var enemyMovement = enemy.GetComponent<EnemyMovement>();
@@ -68,20 +67,5 @@ public class EnemySpawner : MonoBehaviour
         spawnPos.z = 0;
 
         return spawnPos;
-    }
-
-    int timer = 0;
-    void fixedUpdate()
-    {
-        timer++;
-        if (timer >= 60)
-        {
-            timer = 0;
-            if (spawnamound < 20)
-            {
-                SpawnEnemy("Goblin", SpawnEnemyPos());
-                spawnamound++;
-            }
-        }
     }
 }
