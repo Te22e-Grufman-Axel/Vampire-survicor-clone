@@ -18,7 +18,7 @@
                 "y": 0.8190000057220459,
                 "z": 0.13699999451637269
             },
-            "shape": 0,
+            "shape": 1,
             "size": 1
         },
         {
@@ -60,7 +60,7 @@
                 "y": 1.0,
                 "z": 0.6150000095367432
             },
-            "shape": 0,
+            "shape": 4,
             "size": 1
         },
         {
@@ -81,7 +81,7 @@
                 "y": 0.27000001072883608,
                 "z": 0.10100000351667404
             },
-            "shape": 0,
+            "shape": 3,
             "size": 5
         },
         {
@@ -102,29 +102,29 @@
                 "y": 0.003000000026077032,
                 "z": 0.003000000026077032
             },
-            "shape": 0,
+            "shape": 2,
             "size": 1
         },
         {
             "MaxHealth": 312,
-            "speed": 132.0,
-            "damage": 123312,
-            "name": "test_1",
-            "Damageresistance": 123,
-            "attackspeed": 123.0,
-            "attackRange": 11.0,
-            "aggression": 1,
-            "weaponstype": "Spitting acid",
-            "rarity": 1,
+            "speed": 321.0,
+            "damage": 321,
+            "name": "test",
+            "Damageresistance": 321,
+            "attackspeed": 321.0,
+            "attackRange": 312.0,
+            "aggression": 2,
+            "weaponstype": "Melee",
+            "rarity": 0,
             "PngOrColour": false,
-            "pngName": "istockphoto-166762468-612x612.png",
+            "pngName": "SBAAgent.png",
             "color": {
                 "x": 1.0,
                 "y": 1.0,
                 "z": 1.0
             },
             "shape": 0,
-            "size": 11
+            "size": 231
         }
     ]
 }

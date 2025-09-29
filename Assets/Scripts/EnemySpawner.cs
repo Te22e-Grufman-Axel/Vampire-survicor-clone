@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.IO;
+using UnityEngine.Networking;
 
 
 public class EnemySpawner : MonoBehaviour
 {
     public EnemyManager enemyManager;
+    public List<Texture2D> shapeTextures;
     public void SpawnEnemy(string enemyType)
     {
         EnemyData data = enemyManager.GetEnemyData(enemyType);
@@ -29,6 +32,27 @@ public class EnemySpawner : MonoBehaviour
         enemyAttack.attackSpeed = data.attackspeed;
         enemyAttack.attackRange = data.attackRange;
         enemyAttack.weaponType = data.weaponstype;
+
+
+        if (data.PngOrColour)
+        {
+            // PNG mode
+            string appDataPath = System.IO.Path.Combine(
+                Application.persistentDataPath, "UserImages"
+            );
+            string pngPath = System.IO.Path.Combine(appDataPath, data.pngName);
+            StartCoroutine(LoadPngImage(pngPath, enemy.GetComponent<SpriteRenderer>()));
+            enemy.GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 1f);
+        }
+        else
+        {
+            // Shape + Color mode
+            int shapeId = data.shape;
+            if (shapeId >= 0 && shapeId < shapeTextures.Count)
+            {
+                enemy.GetComponent<Renderer>().material.mainTexture = shapeTextures[shapeId];
+            }
+        }
 
         enemy.GetComponent<Renderer>().material.color = new Color(data.color.x, data.color.y, data.color.z);
         enemy.transform.localScale = Vector3.one * data.size;
@@ -68,4 +92,38 @@ public class EnemySpawner : MonoBehaviour
 
         return spawnPos;
     }
+    IEnumerator LoadPngImage(string filePath, SpriteRenderer spriteRenderer)
+    {
+        if (!File.Exists(filePath))
+        {
+            Debug.LogWarning("PNG file not found: " + filePath);
+            yield break;
+        }
+
+        string urlPath = "file:///" + filePath.Replace("\\", "/");
+
+        using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(urlPath))
+        {
+            yield return uwr.SendWebRequest();
+
+            if (uwr.result == UnityWebRequest.Result.Success)
+            {
+                Texture2D tex = DownloadHandlerTexture.GetContent(uwr);
+
+                Sprite sprite = Sprite.Create(
+                    tex,
+                    new Rect(0, 0, tex.width, tex.height),
+                    new Vector2(0.5f, 0.5f), 
+                    100f           
+                );
+
+                spriteRenderer.sprite = sprite;
+            }
+            else
+            {
+                Debug.LogError("Failed to load PNG: " + uwr.error);
+            }
+        }
+    }
+
 }

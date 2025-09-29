@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public Transform hero;
-    public float speed = 2f;
+    public float speed;
     public int aggression;
     public float attackRange;
 

@@ -269,6 +269,7 @@ GameObject:
   - component: {fileID: 1184901949}
   - component: {fileID: 1184901950}
   - component: {fileID: 1184901951}
+  - component: {fileID: 1184901952}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -419,6 +420,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1184901952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184901945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c6415a036d104c4cabfe8156f18d189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  maxHealth: 100
+  currentHealth: 0
+  invincibilityDuration: 1
 --- !u!1 &1647144848
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +466,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyManager: {fileID: 32461731}
+  shapeTextures:
+  - {fileID: 2800000, guid: 88471b81d4201d442860524f9456e1bf, type: 3}
+  - {fileID: 2800000, guid: 4656b2df5ccda13458214e72bffc214f, type: 3}
+  - {fileID: 2800000, guid: 890cc6da03c2cb4498f7dd3adfcb5bcd, type: 3}
+  - {fileID: 2800000, guid: 1307cfa2c910c6c488c3a64ea412a666, type: 3}
+  - {fileID: 2800000, guid: 88e0560a063e73447a18d8ea39ecd1f2, type: 3}
+  - {fileID: 2800000, guid: 46613ae931ade7742bac8a41238b568a, type: 3}
+  - {fileID: 2800000, guid: 49afeb1f202e5194a85ab2af2434784f, type: 3}
+  - {fileID: 2800000, guid: de73e9ebe3c852342abe6687e13487e1, type: 3}
 --- !u!4 &1647144850
 Transform:
   m_ObjectHideFlags: 0
@@ -477,6 +502,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec35d7a263b27694d85d7130a3b21b40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  StagingPool: []
+  ActivePool: []
   enemySpawner: {fileID: 1647144849}
   enemyManager: {fileID: 32461731}
   spawnInterval: 2

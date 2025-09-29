@@ -6,14 +6,23 @@ using UnityEngine;
 public class EnemyAttack : MonoBehaviour
 {
     public Transform hero;
+    public HeroHealth heroHealth;
+    public DecideWhenToSpawnEnemis decideWhenToSpawnEnemis;
     public int damage;
     public float attackSpeed;
     public float attackRange;
     public string weaponType;
     private float distance;
+    private float TimeUntilNextAttack = 0f;
+
+    private bool canAttack = true;
+
     void Start()
     {
         hero = FindObjectOfType<HeroMovement>().transform;
+        heroHealth = hero.GetComponent<HeroHealth>();
+        decideWhenToSpawnEnemis = FindObjectOfType<DecideWhenToSpawnEnemis>();
+
     }
 
 
@@ -22,8 +31,11 @@ public class EnemyAttack : MonoBehaviour
     {
         Vector2 direction = (hero.position - transform.position).normalized;
         distance = Vector2.Distance(hero.position, transform.position);
-        if (hero != null)
+        if (hero != null && canAttack)
         {
+            canAttack = false;
+            TimeUntilNextAttack = 0f;
+
             switch (weaponType)
             {
                 case "Melee":
@@ -43,22 +55,49 @@ public class EnemyAttack : MonoBehaviour
                     break;
             }
         }
+
+
+        TimeUntilNextAttack += Time.deltaTime;
+        if (TimeUntilNextAttack >= attackSpeed)
+        {
+            canAttack = true;
+        }
+
     }
 
     void PerformMeleeAttack()
     {
-        Debug.Log("Performing Melee Attack with damage: " + damage);
+        if (distance < attackRange)
+        {
+            if (heroHealth != null)
+            {
+                heroHealth.TakeDamage(damage);
+            }
+        }
     }
     void PerformExplodeAttack()
     {
-        Debug.Log("Performing Ranged Attack with damage: " + damage);
+        if (distance < attackRange)
+        {
+            if (heroHealth != null)
+            {
+                heroHealth.TakeDamage(damage);
+                Destroy(gameObject);
+            }
+        }
     }
     void PerformSpittingAttack()
     {
-        Debug.Log("Performing Spitting Attack with damage: " + damage);
+        if (distance < attackRange)
+        {
+            if (heroHealth != null)
+            {
+                heroHealth.TakeDamage(damage);
+            }
+        }
     }
     void PerformNecromacyAttack()
     {
-        Debug.Log("Performing Necromacy Attack with damage: " + damage);
+        decideWhenToSpawnEnemis.SpawnEnemy();
     }
 }

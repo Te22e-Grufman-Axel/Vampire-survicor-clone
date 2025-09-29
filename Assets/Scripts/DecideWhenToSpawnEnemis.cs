@@ -4,8 +4,8 @@ using System.Collections.Generic;
 
 public class DecideWhenToSpawnEnemis : MonoBehaviour
 {
-    private List<string> StagingPool = new List<string>(); 
-    private List<string> ActivePool = new List<string>(); 
+    public List<string> StagingPool = new List<string>();
+    public List<string> ActivePool = new List<string>();
 
     public EnemySpawner enemySpawner;
     public EnemyManager enemyManager;
@@ -45,9 +45,7 @@ public class DecideWhenToSpawnEnemis : MonoBehaviour
 
         if (spawnTimer >= spawnInterval && ActivePool.Count > 0)
         {
-            spawnTimer = 0f;
-            string enemyID = GetRandomEnemyType();
-            enemySpawner.SpawnEnemy(enemyID);
+            SpawnEnemy();
         }
 
 
@@ -64,5 +62,12 @@ public class DecideWhenToSpawnEnemis : MonoBehaviour
     {
         int index = Random.Range(0, ActivePool.Count);
         return ActivePool[index];
+    }
+
+    public void SpawnEnemy()
+    {
+        spawnTimer = 0f;
+        string enemyID = GetRandomEnemyType();
+        enemySpawner.SpawnEnemy(enemyID);
     }
 }
