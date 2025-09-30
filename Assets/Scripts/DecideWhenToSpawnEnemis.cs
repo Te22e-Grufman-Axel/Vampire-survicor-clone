@@ -39,8 +39,8 @@ public class DecideWhenToSpawnEnemis : MonoBehaviour
         addEnemyTimer += deltaTime;
 
 
-        spawnInterval = Mathf.Lerp(2f, 0.3f, Mathf.Log10(1f + timeSinceStart * 0.1f));
-
+        // spawnInterval = Mathf.Lerp(2f, 0.3f, Mathf.Log10(1f + timeSinceStart * 0.1f));
+        spawnInterval = 0.0001f;
 
 
         if (spawnTimer >= spawnInterval && ActivePool.Count > 0)
@@ -56,6 +56,7 @@ public class DecideWhenToSpawnEnemis : MonoBehaviour
             StagingPool.RemoveAt(0);
             ActivePool.Add(enemyID);
         }
+
     }
 
     private string GetRandomEnemyType()
@@ -69,5 +70,10 @@ public class DecideWhenToSpawnEnemis : MonoBehaviour
         spawnTimer = 0f;
         string enemyID = GetRandomEnemyType();
         enemySpawner.SpawnEnemy(enemyID);
+    }
+
+    public void SpawnSpecificEnemy(string enemyType)
+    {
+        enemySpawner.SpawnEnemy(enemyType);
     }
 }

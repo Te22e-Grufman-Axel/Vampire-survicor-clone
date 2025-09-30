@@ -21,27 +21,30 @@ public class EnemySpawner : MonoBehaviour
         var enemyHealth = enemy.GetComponent<EnemyHealth>();
         var enemyMovement = enemy.GetComponent<EnemyMovement>();
         var enemyAttack = enemy.GetComponent<EnemyAttack>();
+        SpriteRenderer sr = enemy.GetComponent<SpriteRenderer>();
 
         enemyHealth.maxHealth = data.MaxHealth;
         enemyHealth.Damageresistance = data.Damageresistance;
+
         enemyMovement.speed = data.speed;
         enemyMovement.aggression = data.aggression;
         enemyMovement.attackRange = data.attackRange;
         enemyMovement.weaponType = data.weaponstype;
+
         enemyAttack.damage = data.damage;
         enemyAttack.attackSpeed = data.attackspeed;
         enemyAttack.attackRange = data.attackRange;
         enemyAttack.weaponType = data.weaponstype;
 
 
-        if (data.PngOrColour)
+        if (!data.PngOrColour)
         {
             // PNG mode
             string appDataPath = System.IO.Path.Combine(
                 Application.persistentDataPath, "UserImages"
             );
             string pngPath = System.IO.Path.Combine(appDataPath, data.pngName);
-            StartCoroutine(LoadPngImage(pngPath, enemy.GetComponent<SpriteRenderer>()));
+            StartCoroutine(LoadPngImage(pngPath, sr));
             enemy.GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 1f);
         }
         else
@@ -50,7 +53,15 @@ public class EnemySpawner : MonoBehaviour
             int shapeId = data.shape;
             if (shapeId >= 0 && shapeId < shapeTextures.Count)
             {
-                enemy.GetComponent<Renderer>().material.mainTexture = shapeTextures[shapeId];
+                Texture2D tex = shapeTextures[shapeId];
+
+                Sprite sprite = Sprite.Create(
+                    tex,
+                    new Rect(0, 0, tex.width, tex.height),
+                    new Vector2(0.5f, 0.5f),
+                    200f
+                );
+                sr.sprite = sprite;
             }
         }
 
@@ -73,18 +84,18 @@ public class EnemySpawner : MonoBehaviour
         {
             case 0: // Left
                 spawnPos.x = min.x - margin;
-                spawnPos.y = Random.Range(min.y, max.y);
+                spawnPos.y = Random.Range(min.y - 5, max.y + 5);
                 break;
             case 1: // Right
                 spawnPos.x = max.x + margin;
-                spawnPos.y = Random.Range(min.y, max.y);
+                spawnPos.y = Random.Range(min.y - 5, max.y + 5);
                 break;
             case 2: // Top
-                spawnPos.x = Random.Range(min.x, max.x);
+                spawnPos.x = Random.Range(min.x - 5, max.x + 5);
                 spawnPos.y = max.y + margin;
                 break;
             case 3: // Bottom
-                spawnPos.x = Random.Range(min.x, max.x);
+                spawnPos.x = Random.Range(min.x - 5, max.x + 5);
                 spawnPos.y = min.y - margin;
                 break;
         }
@@ -110,11 +121,13 @@ public class EnemySpawner : MonoBehaviour
             {
                 Texture2D tex = DownloadHandlerTexture.GetContent(uwr);
 
+                float pixelsPerUnit = 200f;
+
                 Sprite sprite = Sprite.Create(
                     tex,
                     new Rect(0, 0, tex.width, tex.height),
-                    new Vector2(0.5f, 0.5f), 
-                    100f           
+                    new Vector2(0.5f, 0.5f),
+                    pixelsPerUnit
                 );
 
                 spriteRenderer.sprite = sprite;

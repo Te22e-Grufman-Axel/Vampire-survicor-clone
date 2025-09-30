@@ -104,27 +104,6 @@
             },
             "shape": 2,
             "size": 1
-        },
-        {
-            "MaxHealth": 312,
-            "speed": 321.0,
-            "damage": 321,
-            "name": "test",
-            "Damageresistance": 321,
-            "attackspeed": 321.0,
-            "attackRange": 312.0,
-            "aggression": 2,
-            "weaponstype": "Melee",
-            "rarity": 0,
-            "PngOrColour": false,
-            "pngName": "SBAAgent.png",
-            "color": {
-                "x": 1.0,
-                "y": 1.0,
-                "z": 1.0
-            },
-            "shape": 0,
-            "size": 231
         }
     ]
 }
