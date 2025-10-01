@@ -4,7 +4,7 @@ public class HeroHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
-    public float invincibilityDuration = 1.0f; // Duration of invincibility in seconds
+    public float invincibilityDuration = 1.0f; 
     private float invincibilityTimer = 0.0f;
     private bool isInvincible = false;
 
@@ -46,14 +46,5 @@ public class HeroHealth : MonoBehaviour
 
         }
 
-    }
-
-    public void Heal(int amount)
-    {
-        currentHealth += amount;
-        if (currentHealth > maxHealth)
-        {
-            currentHealth = maxHealth;
-        }
     }
 }
