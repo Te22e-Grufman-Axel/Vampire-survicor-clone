@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour
 
         void Start()
         {
-                hero = FindObjectOfType<HeroMovement>().transform;
+                hero = FindFirstObjectByType<HeroMovement>().transform;
         }
     void Update()
     {

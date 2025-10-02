@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class HeroHealth : MonoBehaviour
 {
@@ -7,10 +9,14 @@ public class HeroHealth : MonoBehaviour
     public float invincibilityDuration = 1.0f; 
     private float invincibilityTimer = 0.0f;
     private bool isInvincible = false;
+    public TMP_Text healthText;
+    public Slider healthSlider;
 
     void Start()
     {
         currentHealth = maxHealth;
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = currentHealth;
     }
 
     void Update()
@@ -23,13 +29,15 @@ public class HeroHealth : MonoBehaviour
                 isInvincible = false;
             }
         }
-        
+
 
 
         if (currentHealth <= 0)
         {
             Debug.Log("Hero is dead.");
         }
+        healthText.text = "Health: " + currentHealth + "/" + maxHealth;
+        healthSlider.value = currentHealth;
     }
 
     public void TakeDamage(int damage)

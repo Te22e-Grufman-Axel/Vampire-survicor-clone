@@ -29,7 +29,6 @@ public class DecideWhenToSpawnEnemis : MonoBehaviour
                 StagingPool.Add(kvp.Key);
             }
         }
-        spawnInterval = 10000;
     }
 
     void Update()
@@ -40,7 +39,7 @@ public class DecideWhenToSpawnEnemis : MonoBehaviour
         addEnemyTimer += deltaTime;
 
 
-        // spawnInterval = Mathf.Lerp(2f, 0.3f, Mathf.Log10(1f + timeSinceStart * 0.1f));
+        spawnInterval = Mathf.Lerp(2f, 0.3f, Mathf.Log10(1f + timeSinceStart * 0.1f));
 
 
         if (spawnTimer >= spawnInterval && ActivePool.Count > 0)

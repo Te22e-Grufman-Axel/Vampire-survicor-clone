@@ -19,9 +19,9 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
-        hero = FindObjectOfType<HeroMovement>().transform;
+        hero = FindFirstObjectByType<HeroMovement>().transform;
         heroHealth = hero.GetComponent<HeroHealth>();
-        decideWhenToSpawnEnemis = FindObjectOfType<DecideWhenToSpawnEnemis>();
+        decideWhenToSpawnEnemis = FindFirstObjectByType<DecideWhenToSpawnEnemis>();
 
     }
 
