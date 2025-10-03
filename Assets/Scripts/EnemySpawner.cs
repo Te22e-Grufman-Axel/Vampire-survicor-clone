@@ -25,6 +25,8 @@ public class EnemySpawner : MonoBehaviour
 
         enemyHealth.maxHealth = data.MaxHealth;
         enemyHealth.Damageresistance = data.Damageresistance;
+        enemyHealth.enemyType = data.name;
+        enemyHealth.xpValue = CalculateXp(data); 
 
         enemyMovement.speed = data.speed;
         enemyMovement.aggression = data.aggression;
@@ -138,5 +140,17 @@ public class EnemySpawner : MonoBehaviour
             }
         }
     }
-
+    private float CalculateXp(EnemyData data)
+    {
+        float xp = 0f;
+        xp += data.MaxHealth * 0.5f;
+        xp += data.damage * 2f;
+        xp += data.speed * 1.5f;
+        xp += data.Damageresistance * 0.1f;
+        xp += data.attackRange * 0.1f;
+        xp += data.attackspeed * 0.1f;
+        xp += data.rarity * 10f;
+        
+        return xp;
+    }
 }
