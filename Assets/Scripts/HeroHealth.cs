@@ -6,6 +6,7 @@ public class HeroHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
+    public int armor = 5;
     public float invincibilityDuration = 1.0f; 
     private float invincibilityTimer = 0.0f;
     private bool isInvincible = false;
@@ -36,6 +37,7 @@ public class HeroHealth : MonoBehaviour
         {
             Debug.Log("Hero is dead.");
         }
+
         healthText.text = "Health: " + currentHealth + "/" + maxHealth;
         healthSlider.value = currentHealth;
     }
@@ -44,7 +46,9 @@ public class HeroHealth : MonoBehaviour
     {
         if (!isInvincible)
         {
-            currentHealth -= damage;
+            int finalDamage = damage - armor;
+            if (finalDamage < 0) finalDamage = 0;
+            currentHealth -= finalDamage;
             if (currentHealth < 0)
             {
                 currentHealth = 0;

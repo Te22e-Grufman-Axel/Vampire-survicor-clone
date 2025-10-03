@@ -23,7 +23,6 @@ public class GunManager : MonoBehaviour
             {
                 gunTypes[data.gunName] = data;
             }
-            Debug.Log($"Loaded {gunTypes.Count} gun types from JSON");
         }
     }
 
@@ -32,14 +31,9 @@ public class GunManager : MonoBehaviour
         if (gunTypes.TryGetValue(gunName, out var data))
         {
             gunScript.SetStatsFromData(data);
-            Debug.Log($"Set gun data for: {gunName}");
             return true;
         }
-        else
-        {
-            Debug.LogWarning($"Gun data not found for: {gunName}");
-            return false;
-        }
+        return false;
     }
 
     public GunData GetGunData(string gunName)

@@ -10,10 +10,12 @@ public class LevelManagerr : MonoBehaviour
     public float xpIncreaseRate = 1.5f;
     public TMP_Text levelText;
     public Slider xpSlider;
+    public UpgradeManager upgradeManager;
 
     void Start()
     {
         xpToNextLevel = CalculateXPForNextLevel(currentLevel);
+        upgradeManager = FindFirstObjectByType<UpgradeManager>();
     }   
     public void GainXP(float amount)
     {
@@ -34,6 +36,7 @@ public class LevelManagerr : MonoBehaviour
         currentLevel++;
         currentXP -= xpToNextLevel;
         xpToNextLevel = CalculateXPForNextLevel(currentLevel);
+        upgradeManager.OpenUpgradeMenu();
     }
     float CalculateXPForNextLevel(int level)
     {

@@ -21,13 +21,6 @@ public class GunScript : MonoBehaviour
     public float range = 0f;
     public float bulletSpeed = 0f;
 
-    [Header("Upgrades")]
-
-    public float fireRateUpgradeAmount = 0;
-    public int magazineSizeUpgradeAmount = 0;
-    public float reloadTimeUpgradeAmount = 0f;
-    public float damageUpgradeAmount = 0f;
-
     [Header("Aiming")]
     public Transform player;
     public float aimSpeed = 5f;
@@ -87,7 +80,7 @@ public class GunScript : MonoBehaviour
 
     public float GetDamage()
     {
-        float damage = bulletDamage + damageUpgradeAmount;
+        float damage = bulletDamage;
         return damage;
     }
 
