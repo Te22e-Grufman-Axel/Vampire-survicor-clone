@@ -35,7 +35,7 @@ public class HeroHealth : MonoBehaviour
 
         if (currentHealth <= 0)
         {
-            Debug.Log("Hero is dead.");
+            FindFirstObjectByType<Deathmanager>().ShowDeathScreen();
         }
 
         healthText.text = "Health: " + currentHealth + "/" + maxHealth;

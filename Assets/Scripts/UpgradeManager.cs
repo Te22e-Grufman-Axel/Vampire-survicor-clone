@@ -53,7 +53,7 @@ public class UpgradeManager : MonoBehaviour
 
     private void updateUpgradeMenu()
     {
-        List<UpgradeData> randomUpgrades = GetRandomUpgrades(4);
+        List<UpgradeData> randomUpgrades = GetRandomUpgrades(3);
 
         for (int i = 0; i < randomUpgrades.Count; i++)
         {

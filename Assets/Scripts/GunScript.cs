@@ -24,7 +24,7 @@ public class GunScript : MonoBehaviour
     [Header("Aiming")]
     public Transform player;
     public float aimSpeed = 5f;
-    public float offset = 0.55f; 
+    public float offset = 0.55f;
     private Camera mainCamera;
     private Vector3 mousePosition;
     private Vector3 aimDirection;
@@ -37,6 +37,7 @@ public class GunScript : MonoBehaviour
         mainCamera = Camera.main;
         GunManager gunManager = FindFirstObjectByType<GunManager>();
         gunManager.SetGunData("Pistol", this);
+
     }
     void Update()
     {
@@ -90,17 +91,17 @@ public class GunScript : MonoBehaviour
     private void FixedUpdate()
     {
         Vector3 mouseWorldPos = mainCamera.ScreenToWorldPoint(new Vector3(Mouse.current.position.ReadValue().x, Mouse.current.position.ReadValue().y, mainCamera.nearClipPlane));
-        mouseWorldPos.z = 0f; 
-        
+        mouseWorldPos.z = 0f;
+
         Vector2 direction = (mouseWorldPos - player.position).normalized;
-        
+
         Vector3 gunPosition = player.position + (Vector3)(direction * offset);
         transform.position = gunPosition;
-        
+
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
         transform.rotation = Quaternion.Euler(0, 0, angle);
     }
-    
+
 
     public void SetStatsFromData(GunData data)
     {
@@ -110,9 +111,23 @@ public class GunScript : MonoBehaviour
         bulletDamage = data.bulletDamage;
         range = data.range;
         bulletSpeed = data.bulletSpeed;
-        
+
         currentAmmo = magazineSize;
     }
 
+    public GunData GetCurrentGunData()
+    {
+        GunData data = new GunData
+        {
+            gunName = "",
+            fireRate = fireRate,
+            reloadTime = reloadTime,
+            magazineSize = magazineSize,
+            bulletDamage = bulletDamage,
+            range = range,
+            bulletSpeed = bulletSpeed
+        };
+        return data;
+    }
 }
 

@@ -21,6 +21,12 @@ public class SelectMenu : MonoBehaviour
     [SerializeField] private Button colourPickerButton;
     [SerializeField] private Button shapePickerButton;
 
+
+
+    [SerializeField] private Button BackButton;
+
+
+
     private void Start()
     {
         valueModePanel.SetActive(true);
@@ -35,6 +41,8 @@ public class SelectMenu : MonoBehaviour
 
         pngToggle.isOn = true;
         ShowDesignSubpanel(pngToggle.isOn);
+        
+        BackButton.onClick.AddListener(() => UnityEngine.SceneManagement.SceneManager.LoadScene("MainMeny"));
     }
 
     public void GoToDesignMode()

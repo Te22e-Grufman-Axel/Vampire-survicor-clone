@@ -1,0 +1,54 @@
+{
+  "scores": [
+    {
+      "name": "ProGamer",
+      "score": 15420,
+      "time": 1847
+    },
+    {
+      "name": "SurvivorKing",
+      "score": 13750,
+      "time": 1623
+    },
+    {
+      "name": "VampireSlayer",
+      "score": 12890,
+      "time": 1456
+    },
+    {
+      "name": "NightHunter",
+      "score": 11560,
+      "time": 1392
+    },
+    {
+      "name": "BloodBane",
+      "score": 10230,
+      "time": 1278
+    },
+    {
+      "name": "DarknessFoe",
+      "score": 9840,
+      "time": 1156
+    },
+    {
+      "name": "CrimsonHero",
+      "score": 8975,
+      "time": 1089
+    },
+    {
+      "name": "StakeWielder",
+      "score": 7650,
+      "time": 967
+    },
+    {
+      "name": "GarlicMaster",
+      "score": 6420,
+      "time": 823
+    },
+    {
+      "name": "NoobSlayer",
+      "score": 5180,
+      "time": 745
+    }
+  ]
+}
