@@ -42,7 +42,7 @@ public class SelectMenu : MonoBehaviour
         pngToggle.isOn = true;
         ShowDesignSubpanel(pngToggle.isOn);
         
-        BackButton.onClick.AddListener(() => UnityEngine.SceneManagement.SceneManager.LoadScene("MainMeny"));
+
     }
 
     public void GoToDesignMode()
