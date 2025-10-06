@@ -51,7 +51,6 @@ public class EnemyAttack : MonoBehaviour
                     PerformNecromacyAttack();
                     break;
                 default:
-                    Debug.LogWarning("Unknown weapon type: " + weaponType);
                     break;
             }
         }

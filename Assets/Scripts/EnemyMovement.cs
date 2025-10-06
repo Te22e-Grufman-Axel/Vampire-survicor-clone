@@ -64,22 +64,18 @@ public class EnemyMovement : MonoBehaviour
 
                         if (transform.position.x < min.x + margin)
                         {
-                            Debug.Log("1");
                             newPos.x = min.x + margin;
                         }
                         if (transform.position.x > max.x - margin)
                         {
-                            Debug.Log("2");
                             newPos.x = max.x - margin;
                         }
                         if (transform.position.y < min.y + margin)
                         {
-                            Debug.Log("3");
                             newPos.y = min.y + margin;
                         }
                         if (transform.position.y > max.y - margin)
                         {
-                            Debug.Log("4");
                             newPos.y = max.y - margin;
                         }
                         transform.position = newPos;

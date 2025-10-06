@@ -109,7 +109,6 @@ public class EnemySpawner : MonoBehaviour
     {
         if (!File.Exists(filePath))
         {
-            Debug.LogWarning("PNG file not found: " + filePath);
             yield break;
         }
 
@@ -134,16 +133,12 @@ public class EnemySpawner : MonoBehaviour
 
                 spriteRenderer.sprite = sprite;
             }
-            else
-            {
-                Debug.LogError("Failed to load PNG: " + uwr.error);
-            }
         }
     }
     private float CalculateXp(EnemyData data)
     {
         float xp = 0f;
-        xp += data.MaxHealth * 0.5f;
+        xp += data.MaxHealth * 0.1f;
         xp += data.damage * 2f;
         xp += data.speed * 1.5f;
         xp += data.Damageresistance * 0.1f;

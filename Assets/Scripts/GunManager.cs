@@ -60,10 +60,6 @@ public class GunManager : MonoBehaviour
     public void GetNextGun()
     {
         List<GunData> gunList = new List<GunData>(gunTypes.Values);
-        foreach (var gun in gunList)
-        {
-            Debug.Log(gun.gunName);
-        }
         if (gunList.Count == 0) return;
         currentGunIndex = (currentGunIndex + 1) % gunList.Count;
         GunData previousGun = gunScript.GetCurrentGunData();

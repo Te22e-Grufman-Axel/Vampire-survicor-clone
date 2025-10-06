@@ -43,7 +43,6 @@ public class Upgrader : MonoBehaviour
                 gunScript.reloadTime = Mathf.Max(0.1f, gunScript.reloadTime - upgrade.effectAmount * purchaseLevel );
                 break;
             default:
-                Debug.LogWarning($"Unknown affectedStat: {upgrade.affectedStat}");
                 break;
         }
     }

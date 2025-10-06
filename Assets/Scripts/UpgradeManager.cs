@@ -110,7 +110,7 @@ public class UpgradeManager : MonoBehaviour
 
 
                 button.onClick.RemoveAllListeners();
-                button.onClick.AddListener(() => ApplyUpgrade(data , data.purchasedLevel + 1) );
+                button.onClick.AddListener(() => ApplyUpgrade(data, data.purchasedLevel + 1));
             }
         }
     }
@@ -121,7 +121,7 @@ public class UpgradeManager : MonoBehaviour
 
         Upgrader.ApplyUpgrade(upgrade, purchaseLevel);
 
-        if(upgrade.purchasedLevel >= 5)
+        if (upgrade.purchasedLevel >= 5)
         {
             upgradeTypes.Remove(upgrade.upgradeName);
         }
@@ -136,15 +136,15 @@ public class UpgradeManager : MonoBehaviour
             case 1:
                 return Color.gray;
             case 2:
-                return Color.green; 
+                return Color.green;
             case 3:
-                return Color.blue; 
+                return Color.blue;
             case 4:
                 return new Color(0.58f, 0f, 0.83f);
             case 5:
                 return Color.yellow;
             default:
-                return Color.white; 
+                return Color.white;
         }
     }
     private string GetRarityText(int purchasedLevel)
@@ -152,7 +152,7 @@ public class UpgradeManager : MonoBehaviour
         switch (purchasedLevel)
         {
             case 1:
-                return "Common"; 
+                return "Common";
             case 2:
                 return "Uncommon";
             case 3:
@@ -162,7 +162,7 @@ public class UpgradeManager : MonoBehaviour
             case 5:
                 return "Legendary";
             default:
-                return "Unknown"; 
+                return "Unknown";
         }
     }
     private Texture GetIconTexture(string iconName)
@@ -186,12 +186,7 @@ public class UpgradeManager : MonoBehaviour
         string folderPath = Application.persistentDataPath + "/Icons/";
         if (!Directory.Exists(folderPath))
         {
-            Debug.Log("Icons folder not found, creating it at: " + folderPath);
             Directory.CreateDirectory(folderPath);
-        }
-        else
-        {
-            Debug.Log("Icons folder exists at: " + folderPath);
         }
     }
 }

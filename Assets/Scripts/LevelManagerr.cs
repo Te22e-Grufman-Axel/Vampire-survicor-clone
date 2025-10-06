@@ -6,7 +6,7 @@ public class LevelManagerr : MonoBehaviour
 {
     public int currentLevel = 0;
     public float currentXP = 0f;
-    private float allXpEarned = 0f;
+    public float allXpEarned = 0f;
     public float xpToNextLevel;
     public float xpIncreaseRate = 1.5f;
     public TMP_Text levelText;

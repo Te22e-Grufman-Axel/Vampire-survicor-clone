@@ -16,6 +16,7 @@ public class Deathmanager : MonoBehaviour
     // public InputField nameInputField;
     private int minutes;
     private int seconds;
+    private bool HasSaved = false;
 
     void Start()
     {
@@ -27,6 +28,7 @@ public class Deathmanager : MonoBehaviour
         Restart1.gameObject.SetActive(false);
         Restart2.gameObject.SetActive(false);
         newHighScoreText.SetActive(false);
+        HasSaved = false;
 
     }
 
@@ -38,7 +40,7 @@ public class Deathmanager : MonoBehaviour
         ScoreText.text = "Score: " + score.ToString();
         TimeText.text = "Time survived: " + FormatTime(timeSurvived);
         Time.timeScale = 0f;
-        // CheckIfTop10(score);
+        CheckIfTop10(score);
     }
 
 
@@ -51,11 +53,12 @@ public class Deathmanager : MonoBehaviour
     }
     private void RestartGame()
     {
-        Debug.Log("Restart button clicked");
+     UnityEngine.SceneManagement.SceneManager.LoadScene("MainMeny");
     }
     private void SaveScore()
     {
-        Debug.Log("Save Score button clicked");
+        if (HasSaved) return; 
+        HasSaved = true;
         int score = FindFirstObjectByType<LevelManagerr>().GetScore();
         float timeSurvived = Time.timeSinceLevelLoad;
         string playerName = "Player";
@@ -108,14 +111,13 @@ public class Deathmanager : MonoBehaviour
             string json = JsonUtility.ToJson(highScores, true);
             File.WriteAllText(filePath, json);
 
-            Debug.Log($"High score saved: {playerName} - Score: {score}, Time: {timeSurvived}");
         }
         catch (System.Exception e)
         {
             Debug.LogError($"Failed to save high score: {e.Message}");
         }
     }
-    
+
 
     private void CheckIfTop10(int score)
     {
@@ -128,23 +130,30 @@ public class Deathmanager : MonoBehaviour
 
             if (highScores.scores.Count < 10 || score > highScores.scores[highScores.scores.Count - 1].score)
             {
-                newHighScoreText.SetActive(true);
-                SaveScoreButton.gameObject.SetActive(true);
-                Restart2.gameObject.SetActive(true);
-                Restart1.gameObject.SetActive(false);
+                NewHighScore();
             }
             else
             {
-                newHighScoreText.SetActive(false);
-                SaveScoreButton.gameObject.SetActive(false);
-                Restart2.gameObject.SetActive(false);
-                Restart1.gameObject.SetActive(true);
+                NotNewHighScore();
             }
         }
         else
         {
-            newHighScoreText.SetActive(true);
-            SaveScoreButton.gameObject.SetActive(true);
+            NewHighScore();
         }
+    }
+    private void NewHighScore()
+    {
+        newHighScoreText.SetActive(true);
+        SaveScoreButton.gameObject.SetActive(true);
+        Restart2.gameObject.SetActive(true);
+        Restart1.gameObject.SetActive(false);
+    }
+    private void NotNewHighScore()
+    {
+        newHighScoreText.SetActive(false);
+        SaveScoreButton.gameObject.SetActive(false);
+        Restart2.gameObject.SetActive(false);
+        Restart1.gameObject.SetActive(true);
     }
 }

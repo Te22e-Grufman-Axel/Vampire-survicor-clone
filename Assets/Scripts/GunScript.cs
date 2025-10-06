@@ -21,6 +21,14 @@ public class GunScript : MonoBehaviour
     public float range = 0f;
     public float bulletSpeed = 0f;
 
+    [Header("Upgrade Stats")]
+    public float upgradeFireRate = 0f;
+    public float upgradeReloadTime = 0f;
+    public int upgradeMagazineSize = 0;
+    public float upgradeBulletDamage = 0f;
+    public float upgradeRange = 0f;
+    public float upgradeBulletSpeed = 0f;
+
     [Header("Aiming")]
     public Transform player;
     public float aimSpeed = 5f;
@@ -113,6 +121,7 @@ public class GunScript : MonoBehaviour
         bulletSpeed = data.bulletSpeed;
 
         currentAmmo = magazineSize;
+        AddUpgradeStats();
     }
 
     public GunData GetCurrentGunData()
@@ -128,6 +137,17 @@ public class GunScript : MonoBehaviour
             bulletSpeed = bulletSpeed
         };
         return data;
+    }
+    private void AddUpgradeStats()
+    {
+        fireRate += upgradeFireRate;
+        reloadTime = Mathf.Max(0.1f, reloadTime - upgradeReloadTime);
+        magazineSize += upgradeMagazineSize;
+        bulletDamage += upgradeBulletDamage;
+        range += upgradeRange;
+        bulletSpeed += upgradeBulletSpeed;
+
+        currentAmmo = magazineSize;
     }
 }
 
