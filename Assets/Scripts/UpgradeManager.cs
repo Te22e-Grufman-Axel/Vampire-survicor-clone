@@ -165,18 +165,18 @@ public class UpgradeManager : MonoBehaviour
                 return "Unknown";
         }
     }
-    private Texture GetIconTexture(string iconName)
+    private Texture GetIconTexture(int iconID)
     {
-        string filePath = Application.persistentDataPath + "/Icons/" + iconName + ".png";
-        if (System.IO.File.Exists(filePath))
-        {
-            byte[] fileData = System.IO.File.ReadAllBytes(filePath);
-            Texture2D tex = new Texture2D(2, 2);
-            if (tex.LoadImage(fileData))
-            {
-                return tex;
-            }
-        }
+        // string filePath = Application.persistentDataPath + "/Icons/" + iconName + ".png";
+        // if (System.IO.File.Exists(filePath))
+        // {
+        //     byte[] fileData = System.IO.File.ReadAllBytes(filePath);
+        //     Texture2D tex = new Texture2D(2, 2);
+        //     if (tex.LoadImage(fileData))
+        //     {
+        //         return tex;
+        //     }
+        // }
         return null;
     }
 
