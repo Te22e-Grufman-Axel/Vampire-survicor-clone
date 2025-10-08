@@ -10,11 +10,11 @@ public class DecideWhenToSpawnEnemis : MonoBehaviour
     public EnemySpawner enemySpawner;
     public EnemyManager enemyManager;
 
-    public float spawnInterval = 2f;
+    public float spawnInterval = 10f;
     private float spawnTimer = 0f;
     private float timeSinceStart = 0f;
 
-    private float addEnemyInterval = 5f;
+    private float addEnemyInterval = 45f;
     private float addEnemyTimer = 0f;
 
     void Start()
@@ -29,6 +29,10 @@ public class DecideWhenToSpawnEnemis : MonoBehaviour
                 StagingPool.Add(kvp.Key);
             }
         }
+        string enemyID = StagingPool[0];
+        StagingPool.RemoveAt(0);
+        ActivePool.Add(enemyID);
+        Time.timeScale = 10f;
     }
 
     void Update()
@@ -39,7 +43,7 @@ public class DecideWhenToSpawnEnemis : MonoBehaviour
         addEnemyTimer += deltaTime;
 
 
-        spawnInterval = Mathf.Lerp(2f, 0.3f, Mathf.Log10(1f + timeSinceStart * 0.1f));
+        spawnInterval = Mathf.Lerp(10f, 0.3f, Mathf.Log10(1f + timeSinceStart * 0.005f));
 
 
         if (spawnTimer >= spawnInterval && ActivePool.Count > 0)
