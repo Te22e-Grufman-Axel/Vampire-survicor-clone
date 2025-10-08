@@ -14,6 +14,7 @@ public class UpgradeManager : MonoBehaviour
     public Upgrader Upgrader;
 
     public Dictionary<string, UpgradeData> upgradeTypes = new Dictionary<string, UpgradeData>();
+    public List<Texture2D> IconTextures;
 
 
 
@@ -167,16 +168,10 @@ public class UpgradeManager : MonoBehaviour
     }
     private Texture GetIconTexture(int iconID)
     {
-        // string filePath = Application.persistentDataPath + "/Icons/" + iconName + ".png";
-        // if (System.IO.File.Exists(filePath))
-        // {
-        //     byte[] fileData = System.IO.File.ReadAllBytes(filePath);
-        //     Texture2D tex = new Texture2D(2, 2);
-        //     if (tex.LoadImage(fileData))
-        //     {
-        //         return tex;
-        //     }
-        // }
+        if (iconID >= 0 && iconID < IconTextures.Count)
+        {
+            return IconTextures[iconID];
+        }
         return null;
     }
 

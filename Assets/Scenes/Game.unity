@@ -1854,6 +1854,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 386944242}
   m_CullTransparentMesh: 1
+--- !u!1 &459388000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 459388002}
+  - component: {fileID: 459388001}
+  m_Layer: 0
+  m_Name: Bgmanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &459388001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459388000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e1e728ed3e0d704eac43ca8d987efa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BgManager
+  backgroundTilePrefab: {fileID: 6217769114311890443, guid: 092c2feef41d89e4aa26100e48945e68, type: 3}
+  player: {fileID: 1184901947}
+  tileSize: 5
+  renderDistance: 5
+  poolSize: 50
+--- !u!4 &459388002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 459388000}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.55304, y: 0, z: 8.73763}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &473628377
 GameObject:
   m_ObjectHideFlags: 0
@@ -3479,6 +3528,7 @@ Transform:
   - {fileID: 163706600}
   - {fileID: 1733013323}
   - {fileID: 24924578}
+  - {fileID: 1448510718}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &988908484
@@ -6486,12 +6536,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1448510716}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1019.08057, y: 358.85455, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1019.67004, y: 357.40222, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 971391762}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1480868447
 GameObject:
@@ -7424,6 +7474,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   upgradeMenu: {fileID: 633835864}
   Upgrader: {fileID: 1184901953}
+  IconTextures: []
 --- !u!1 &1736929898
 GameObject:
   m_ObjectHideFlags: 0
@@ -9015,4 +9066,4 @@ SceneRoots:
   - {fileID: 1184901947}
   - {fileID: 1255614555}
   - {fileID: 1314782443}
-  - {fileID: 1448510718}
+  - {fileID: 459388002}

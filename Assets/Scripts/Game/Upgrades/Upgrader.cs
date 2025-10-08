@@ -25,22 +25,34 @@ public class Upgrader : MonoBehaviour
                 heroMovement.moveSpeed += upgrade.effectAmount * purchaseLevel;
                 break;
             case "fireRate":
-                gunScript.fireRate = Mathf.Max(0.1f, gunScript.fireRate + upgrade.effectAmount * purchaseLevel);
+                gunScript.DeleteUpgradedStats("fireRate");
+                gunScript.upgradeFireRate = Mathf.Max(0.1f, gunScript.fireRate + upgrade.effectAmount * purchaseLevel);
+                gunScript.AddUpgradeStats("fireRate");
                 break;
             case "bulletDamage":
-                gunScript.bulletDamage += (int)upgrade.effectAmount * purchaseLevel;
+                gunScript.DeleteUpgradedStats("bulletDamage");
+                gunScript.upgradeBulletDamage += (int)upgrade.effectAmount * purchaseLevel;
+                gunScript.AddUpgradeStats("bulletDamage");  
                 break;
             case "bulletSpeed":
-                gunScript.bulletSpeed += upgrade.effectAmount * purchaseLevel;
+                gunScript.DeleteUpgradedStats("bulletSpeed");
+                gunScript.upgradeBulletSpeed += upgrade.effectAmount * purchaseLevel;
+                gunScript.AddUpgradeStats("bulletSpeed");
                 break;
             case "bulletRange":
-                gunScript.range += upgrade.effectAmount * purchaseLevel;
+                gunScript.DeleteUpgradedStats("bulletRange");
+                gunScript.upgradeRange += upgrade.effectAmount * purchaseLevel;
+                gunScript.AddUpgradeStats("bulletRange");
                 break;
             case "magazineSize":
-                gunScript.magazineSize += (int)upgrade.effectAmount * purchaseLevel;
+                gunScript.DeleteUpgradedStats("magazineSize");
+                gunScript.upgradeMagazineSize += (int)upgrade.effectAmount * purchaseLevel;
+                gunScript.AddUpgradeStats("magazineSize");
                 break;
             case "reloadTime":
-                gunScript.reloadTime = Mathf.Max(0.1f, gunScript.reloadTime - upgrade.effectAmount * purchaseLevel );
+                gunScript.DeleteUpgradedStats("reloadTime");
+                gunScript.upgradeReloadTime = Mathf.Max(0.1f, gunScript.reloadTime - upgrade.effectAmount * purchaseLevel );
+                gunScript.AddUpgradeStats("reloadTime");
                 break;
             default:
                 break;

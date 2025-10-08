@@ -121,7 +121,7 @@ public class GunScript : MonoBehaviour
         bulletSpeed = data.bulletSpeed;
 
         currentAmmo = magazineSize;
-        AddUpgradeStats();
+        AddAllUpgradeStats();
     }
 
     public GunData GetCurrentGunData()
@@ -138,7 +138,59 @@ public class GunScript : MonoBehaviour
         };
         return data;
     }
-    private void AddUpgradeStats()
+    public void AddUpgradeStats(string affectedStat)
+    {
+        switch (affectedStat)
+        {
+            case "fireRate":
+                fireRate += upgradeFireRate;
+                break;
+            case "reloadTime":
+                reloadTime = Mathf.Max(0.1f, reloadTime - upgradeReloadTime);
+                break;
+            case "magazineSize":
+                magazineSize += upgradeMagazineSize;
+                break;
+            case "bulletDamage":
+                bulletDamage += upgradeBulletDamage;
+                break;
+            case "range":
+                range += upgradeRange;
+                break;
+            case "bulletSpeed":
+                bulletSpeed += upgradeBulletSpeed;
+                break;
+            default:
+                break;
+        }
+    }
+    public void DeleteUpgradedStats(string affectedStat)
+    {
+        switch (affectedStat)
+        {
+            case "fireRate":
+                fireRate -= upgradeFireRate;
+                break;
+            case "reloadTime":
+                reloadTime = Mathf.Max(0.1f, reloadTime + upgradeReloadTime);
+                break;
+            case "magazineSize":
+                magazineSize -= upgradeMagazineSize;
+                break;
+            case "bulletDamage":
+                bulletDamage -= upgradeBulletDamage;
+                break;
+            case "range":
+                range -= upgradeRange;
+                break;
+            case "bulletSpeed":
+                bulletSpeed -= upgradeBulletSpeed;
+                break;
+            default:
+                break;
+        }
+    }
+    private void AddAllUpgradeStats()
     {
         fireRate += upgradeFireRate;
         reloadTime = Mathf.Max(0.1f, reloadTime - upgradeReloadTime);
@@ -146,8 +198,6 @@ public class GunScript : MonoBehaviour
         bulletDamage += upgradeBulletDamage;
         range += upgradeRange;
         bulletSpeed += upgradeBulletSpeed;
-
-        currentAmmo = magazineSize;
-    }
+    }   
 }
 
