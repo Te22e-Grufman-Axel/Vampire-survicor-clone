@@ -1,84 +1,84 @@
 {
-  "upgrades": [
-    {
-      "upgradeName": "Vitality Boost",
-      "description": "Increases your maximum health capacity",
-      "icon": 1,
-      "effectAmount": 25.0,
-      "purchasedLevel": 0,
-      "affectedStat": "maxHealth"
-    },
-    {
-      "upgradeName": "First Aid",
-      "description": "Instantly restores health",
-      "icon": 2,
-      "effectAmount": 20.0,
-      "purchasedLevel": 0,
-      "affectedStat": "currentHealth"
-    },
-    {
-      "upgradeName": "Body Armor",
-      "description": "Provides additional protection against damage",
-      "icon": 3,
-      "effectAmount": 5.0,
-      "purchasedLevel": 0,
-      "affectedStat": "armor"
-    },
-    {
-      "upgradeName": "Swift Feet",
-      "description": "Increases your movement speed",
-      "icon": 4,
-      "effectAmount": 0.5,
-      "purchasedLevel": 0,
-      "affectedStat": "speed"
-    },
-    {
-      "upgradeName": "Rapid Fire",
-      "description": "Increases your weapon's rate of fire",
-      "icon": 5,
-      "effectAmount": 0.1,
-      "purchasedLevel": 0,
-      "affectedStat": "fireRate"
-    },
-    {
-      "upgradeName": "Power Shot",
-      "description": "Increases the damage of your bullets",
-      "icon": 6,
-      "effectAmount": 5.0,
-      "purchasedLevel": 0,
-      "affectedStat": "bulletDamage"
-    },
-    {
-      "upgradeName": "Velocity Boost",
-      "description": "Makes your bullets travel faster",
-      "icon": 7,
-      "effectAmount": 2.0,
-      "purchasedLevel": 0,
-      "affectedStat": "bulletSpeed"
-    },
-    {
-      "upgradeName": "Long Range",
-      "description": "Extends the range of your bullets",
-      "icon": 8,
-      "effectAmount": 1.5,
-      "purchasedLevel": 0,
-      "affectedStat": "bulletRange"
-    },
-    {
-      "upgradeName": "Extended Mag",
-      "description": "Increases your magazine capacity",
-      "icon": 9,
-      "effectAmount": 3.0,
-      "purchasedLevel": 0,
-      "affectedStat": "magazineSize"
-    },
-    {
-      "upgradeName": "Quick Reload",
-      "description": "Reduces the time it takes to reload your weapon",
-      "icon": 10,
-      "effectAmount": 0.2,
-      "purchasedLevel": 0,
-      "affectedStat": "reloadTime"
-    }
-  ]
+    "upgrades": [
+        {
+            "upgradeName": "Vitality Boost",
+            "description": "Increases your maximum health capacity",
+            "icon": 0,
+            "effectAmount": 25.0,
+            "purchasedLevel": 0,
+            "affectedStat": "maxHealth"
+        },
+        {
+            "upgradeName": "First Aid",
+            "description": "Instantly restores health",
+            "icon": 1,
+            "effectAmount": 20.0,
+            "purchasedLevel": 0,
+            "affectedStat": "currentHealth"
+        },
+        {
+            "upgradeName": "Body Armor",
+            "description": "Provides additional protection against damage",
+            "icon": 2,
+            "effectAmount": 5.0,
+            "purchasedLevel": 0,
+            "affectedStat": "armor"
+        },
+        {
+            "upgradeName": "Swift Feet",
+            "description": "Increases your movement speed",
+            "icon": 3,
+            "effectAmount": 0.5,
+            "purchasedLevel": 0,
+            "affectedStat": "speed"
+        },
+        {
+            "upgradeName": "Rapid Fire",
+            "description": "Increases your weapon's rate of fire",
+            "icon": 4,
+            "effectAmount": 0.10000000149011612,
+            "purchasedLevel": 0,
+            "affectedStat": "fireRate"
+        },
+        {
+            "upgradeName": "Power Shot",
+            "description": "Increases the damage of your bullets",
+            "icon": 5,
+            "effectAmount": 5.0,
+            "purchasedLevel": 0,
+            "affectedStat": "bulletDamage"
+        },
+        {
+            "upgradeName": "Velocity Boost",
+            "description": "Makes your bullets travel faster",
+            "icon": 6,
+            "effectAmount": 2.0,
+            "purchasedLevel": 0,
+            "affectedStat": "bulletSpeed"
+        },
+        {
+            "upgradeName": "Long Range",
+            "description": "Extends the range of your bullets",
+            "icon": 7,
+            "effectAmount": 1.5,
+            "purchasedLevel": 0,
+            "affectedStat": "bulletRange"
+        },
+        {
+            "upgradeName": "Extended Mag",
+            "description": "Increases your magazine capacity",
+            "icon": 8,
+            "effectAmount": 3.0,
+            "purchasedLevel": 0,
+            "affectedStat": "magazineSize"
+        },
+        {
+            "upgradeName": "Quick Reload",
+            "description": "Reduces the time it takes to reload your weapon",
+            "icon": 9,
+            "effectAmount": 0.20000000298023225,
+            "purchasedLevel": 0,
+            "affectedStat": "reloadTime"
+        }
+    ]
 }
