@@ -1,9 +1,19 @@
 {
     "scores": [
         {
-            "name": "Player",
-            "score": 1003,
-            "time": 43
+            "name": "test",
+            "score": 55,
+            "time": 11
+        },
+        {
+            "name": "bob",
+            "score": 55,
+            "time": 15
+        },
+        {
+            "name": "kicki",
+            "score": 55,
+            "time": 31
         }
     ]
 }

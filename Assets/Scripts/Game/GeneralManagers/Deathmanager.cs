@@ -13,21 +13,26 @@ public class Deathmanager : MonoBehaviour
     public Button Restart1;
     public Button Restart2;
     public Button SaveScoreButton;
-    // public InputField nameInputField;
     private int minutes;
     private int seconds;
     private bool HasSaved = false;
 
+    [Header("EnterYourName")]
+    public GameObject enterYourNamePanel;
+    public TMP_InputField nameInputField;
+    public Button SubmitNameButton;
     void Start()
     {
         deathScreen.SetActive(false);
         Restart1.onClick.AddListener(RestartGame);
         Restart2.onClick.AddListener(RestartGame);
-        SaveScoreButton.onClick.AddListener(SaveScore);
+        SaveScoreButton.onClick.AddListener(OpenEnterYourNamePanel);
         SaveScoreButton.gameObject.SetActive(false);
         Restart1.gameObject.SetActive(false);
         Restart2.gameObject.SetActive(false);
         newHighScoreText.SetActive(false);
+        SubmitNameButton.onClick.AddListener(SaveScore);
+        enterYourNamePanel.SetActive(false);
         HasSaved = false;
 
     }
@@ -42,7 +47,10 @@ public class Deathmanager : MonoBehaviour
         Time.timeScale = 0f;
         CheckIfTop10(score);
     }
-
+    public void OpenEnterYourNamePanel()
+    {
+        enterYourNamePanel.SetActive(true);
+    }
 
     private string FormatTime(float time)
     {
@@ -53,16 +61,21 @@ public class Deathmanager : MonoBehaviour
     }
     private void RestartGame()
     {
-     UnityEngine.SceneManagement.SceneManager.LoadScene("MainMeny");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("MainMeny");
     }
     private void SaveScore()
     {
-        if (HasSaved) return; 
+        if (HasSaved) return;
         HasSaved = true;
         int score = FindFirstObjectByType<LevelManagerr>().GetScore();
         float timeSurvived = Time.timeSinceLevelLoad;
-        string playerName = "Player";
+        string playerName = nameInputField.text;
+        if (string.IsNullOrWhiteSpace(playerName))
+        {
+            playerName = "Player";
+        }
         SaveHighScoreToFile(playerName, score, (int)timeSurvived);
+        RestartGame();
     }
 
 
