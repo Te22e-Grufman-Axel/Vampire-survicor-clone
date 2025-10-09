@@ -4,12 +4,11 @@ using UnityEngine;
 public class BgManager : MonoBehaviour
 {
     [Header("Background Settings")]
-    public GameObject backgroundTilePrefab; // Assign your background prefab here
-    public Transform player; // Reference to the player transform
-    public float tileSize = 20f; // Size of each background tile
-    public int renderDistance = 3; // How many tiles around the player to render
-
-    public int poolSize = 50; // Pool size if using pooling
+    public GameObject backgroundTilePrefab;
+    public Transform player;
+    public float tileSize = 20f;
+    public int renderDistance = 3;
+    public int poolSize = 50; 
 
     private Dictionary<Vector2Int, GameObject> activeTiles = new Dictionary<Vector2Int, GameObject>();
     private Queue<GameObject> tilePool = new Queue<GameObject>();

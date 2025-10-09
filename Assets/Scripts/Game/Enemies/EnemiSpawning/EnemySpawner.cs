@@ -11,6 +11,8 @@ public class EnemySpawner : MonoBehaviour
 {
     public EnemyManager enemyManager;
     public List<Texture2D> shapeTextures;
+    public DecideWhenToSpawnEnemis decideWhenToSpawnEnemis;
+    public Transform hero;
     public void SpawnEnemy(string enemyType)
     {
         EnemyData data = enemyManager.GetEnemyData(enemyType);
@@ -21,12 +23,13 @@ public class EnemySpawner : MonoBehaviour
         var enemyHealth = enemy.GetComponent<EnemyHealth>();
         var enemyMovement = enemy.GetComponent<EnemyMovement>();
         var enemyAttack = enemy.GetComponent<EnemyAttack>();
+        var toFarAwayScript = enemy.GetComponent<ToFarAwayScript>();
         SpriteRenderer sr = enemy.GetComponent<SpriteRenderer>();
 
         enemyHealth.maxHealth = data.MaxHealth;
         enemyHealth.Damageresistance = data.Damageresistance;
         enemyHealth.enemyType = data.name;
-        enemyHealth.xpValue = CalculateXp(data); 
+        enemyHealth.xpValue = CalculateXp(data);
 
         enemyMovement.speed = data.speed;
         enemyMovement.aggression = data.aggression;
@@ -37,6 +40,10 @@ public class EnemySpawner : MonoBehaviour
         enemyAttack.attackSpeed = data.attackspeed;
         enemyAttack.attackRange = data.attackRange;
         enemyAttack.weaponType = data.weaponstype;
+
+        toFarAwayScript.enemyType = data.name;
+        toFarAwayScript.DecideWhenToSpawnEnemis = decideWhenToSpawnEnemis;
+        toFarAwayScript.player = hero;
 
 
         if (!data.PngOrColour)

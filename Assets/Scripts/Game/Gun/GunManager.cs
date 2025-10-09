@@ -79,6 +79,13 @@ public class GunManager : MonoBehaviour
 
     private void NewWeaponsScreen(GunData PreviusesGun, GunData NewGun)
     {
+        NewGun.fireRate += gunScript.upgradeFireRate;
+        NewGun.reloadTime = Mathf.Max(0.1f, NewGun.reloadTime - gunScript.upgradeReloadTime);
+        NewGun.magazineSize += gunScript.upgradeMagazineSize;   
+        NewGun.bulletDamage += gunScript.upgradeBulletDamage;
+        NewGun.range += gunScript.upgradeRange;
+        NewGun.bulletSpeed += gunScript.upgradeBulletSpeed;
+
         Time.timeScale = 0f;
         newWeaponsScreen.SetActive(true);
         gunNameText.text = NewGun.gunName;

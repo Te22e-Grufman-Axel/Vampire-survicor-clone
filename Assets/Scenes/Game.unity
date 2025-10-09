@@ -3106,7 +3106,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 140.29999, y: -71}
+  m_AnchoredPosition: {x: 149, y: -14}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &871624232
@@ -4963,7 +4963,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   maxHealth: 100
   currentHealth: 0
-  armor: 5
+  armor: 0
   invincibilityDuration: 1
   healthText: {fileID: 377303200}
   healthSlider: {fileID: 871624232}
@@ -7260,6 +7260,8 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 46613ae931ade7742bac8a41238b568a, type: 3}
   - {fileID: 2800000, guid: 49afeb1f202e5194a85ab2af2434784f, type: 3}
   - {fileID: 2800000, guid: de73e9ebe3c852342abe6687e13487e1, type: 3}
+  decideWhenToSpawnEnemis: {fileID: 1647144851}
+  hero: {fileID: 1184901947}
 --- !u!4 &1647144850
 Transform:
   m_ObjectHideFlags: 0
@@ -8793,8 +8795,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: 24}
-  m_SizeDelta: {x: 30, y: 20}
+  m_AnchoredPosition: {x: 0, y: -29}
+  m_SizeDelta: {x: 0, y: 20}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2058503708
 MonoBehaviour:

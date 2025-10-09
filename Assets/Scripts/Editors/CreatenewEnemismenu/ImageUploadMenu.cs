@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using System.IO;
 using TMPro;
+using SFB;
 
 
 public class ImageUploadMenu : MonoBehaviour
@@ -32,6 +33,14 @@ public class ImageUploadMenu : MonoBehaviour
         string path = UnityEditor.EditorUtility.OpenFilePanel("Choose a PNG", "", "png");
         if (!string.IsNullOrEmpty(path))
             StartCoroutine(LoadAndSaveImage(path));
+#endif
+#if !UNITY_EDITOR
+        var pathArray = StandaloneFileBrowser.OpenFilePanel("Open File", "", "png", false);
+        if (pathArray != null && pathArray.Length > 0 && !string.IsNullOrEmpty(pathArray[0]))
+        {
+            string path = pathArray[0];
+            StartCoroutine(LoadAndSaveImage(path));
+        }
 #endif
     }
 

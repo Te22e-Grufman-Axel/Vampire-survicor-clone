@@ -6,8 +6,8 @@ public class HeroHealth : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth;
-    public int armor = 5;
-    public float invincibilityDuration = 1.0f; 
+    public int armor = 0;
+    public float invincibilityDuration = 0.5f; 
     private float invincibilityTimer = 0.0f;
     private bool isInvincible = false;
     public TMP_Text healthText;
@@ -47,6 +47,8 @@ public class HeroHealth : MonoBehaviour
         if (!isInvincible)
         {
             int finalDamage = damage - armor;
+            armor = armor - damage;
+            if (armor < 0) armor = 0;
             if (finalDamage < 0) finalDamage = 0;
             currentHealth -= finalDamage;
             if (currentHealth < 0)
