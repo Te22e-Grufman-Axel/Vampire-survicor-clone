@@ -53,7 +53,7 @@ public class EnemySpawner : MonoBehaviour
                 Application.persistentDataPath, "UserImages"
             );
             string pngPath = System.IO.Path.Combine(appDataPath, data.pngName);
-            StartCoroutine(LoadPngImage(pngPath, sr));
+            StartCoroutine(LoadPngImage(pngPath, sr, data.size));
             enemy.GetComponent<Renderer>().material.color = new Color(1f, 1f, 1f, 1f);
         }
         else
@@ -112,7 +112,7 @@ public class EnemySpawner : MonoBehaviour
 
         return spawnPos;
     }
-    IEnumerator LoadPngImage(string filePath, SpriteRenderer spriteRenderer)
+    IEnumerator LoadPngImage(string filePath, SpriteRenderer spriteRenderer, float size)
     {
         if (!File.Exists(filePath))
         {
@@ -129,8 +129,8 @@ public class EnemySpawner : MonoBehaviour
             {
                 Texture2D tex = DownloadHandlerTexture.GetContent(uwr);
 
-                float pixelsPerUnit = 200f;
-
+                float pixelsPerUnit = 100f;
+                
                 Sprite sprite = Sprite.Create(
                     tex,
                     new Rect(0, 0, tex.width, tex.height),
@@ -139,6 +139,9 @@ public class EnemySpawner : MonoBehaviour
                 );
 
                 spriteRenderer.sprite = sprite;
+                
+                spriteRenderer.drawMode = SpriteDrawMode.Sliced;
+                spriteRenderer.size = new Vector2(size, size);
             }
         }
     }

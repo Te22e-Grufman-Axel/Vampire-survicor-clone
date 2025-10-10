@@ -79,6 +79,22 @@
             "effectAmount": 0.20000000298023225,
             "purchasedLevel": 0,
             "affectedStat": "reloadTime"
+        },
+        {
+            "upgradeName": "test",
+            "description": "test",
+            "icon": 2,
+            "effectAmount": 0.0,
+            "purchasedLevel": 0,
+            "affectedStat": "armor"
+        },
+        {
+            "upgradeName": "test_1",
+            "description": "test",
+            "icon": 2,
+            "effectAmount": 0.0,
+            "purchasedLevel": 0,
+            "affectedStat": "fireRate"
         }
     ]
 }

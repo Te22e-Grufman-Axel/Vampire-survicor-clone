@@ -35,7 +35,7 @@ public class ImageUploadMenu : MonoBehaviour
             StartCoroutine(LoadAndSaveImage(path));
 #endif
 #if !UNITY_EDITOR
-        var pathArray = StandaloneFileBrowser.OpenFilePanel("Open File", "", "png", false);
+        var pathArray = StandaloneFileBrowser.OpenFilePanel("Choose a PNG", "", "png", false);
         if (pathArray != null && pathArray.Length > 0 && !string.IsNullOrEmpty(pathArray[0]))
         {
             string path = pathArray[0];

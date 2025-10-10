@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 public class DecideWhenToSpawnEnemis : MonoBehaviour
 {
@@ -29,12 +30,17 @@ public class DecideWhenToSpawnEnemis : MonoBehaviour
                 StagingPool.Add(kvp.Key);
             }
         }
+        
+        // Sort by rarity (grouping same rarities together), then randomize within each rarity group
+        StagingPool = StagingPool
+            .OrderBy(enemyKey => enemyManager.enemyTypes[enemyKey].rarity)
+            .ThenBy(x => Random.value)
+            .ToList();
+        
         string enemyID = StagingPool[0];
         StagingPool.RemoveAt(0);
         ActivePool.Add(enemyID);
-    }
-
-    void Update()
+    }    void Update()
     {
         float deltaTime = Time.deltaTime;
         timeSinceStart += deltaTime;

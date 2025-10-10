@@ -1885,8 +1885,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BgManager
   backgroundTilePrefab: {fileID: 6217769114311890443, guid: 092c2feef41d89e4aa26100e48945e68, type: 3}
   player: {fileID: 1184901947}
-  tileSize: 5
-  renderDistance: 5
+  tileSize: 10
+  renderDistance: 2
   poolSize: 50
 --- !u!4 &459388002
 Transform:
@@ -2459,7 +2459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &577256718
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2807,7 +2807,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18.622864, y: -0.6}
+  m_AnchoredPosition: {x: 0, y: -0.6}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &787811452
@@ -3407,7 +3407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 18.622864, y: -51.6}
+  m_AnchoredPosition: {x: 0, y: -51.6}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &919378864
@@ -7002,7 +7002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1590957042
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7476,7 +7476,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   upgradeMenu: {fileID: 633835864}
   Upgrader: {fileID: 1184901953}
-  IconTextures: []
+  IconTextures:
+  - {fileID: 2800000, guid: df31b99b5c4570345bac16e50bf9f1c5, type: 3}
+  - {fileID: 2800000, guid: 15fd27a4ba58d3a43bc1f1403a086606, type: 3}
+  - {fileID: 2800000, guid: 9618b4fd33a31314ea7ae387abd3c784, type: 3}
+  - {fileID: 2800000, guid: fa7194531d66e7945ad08e8b4c46f232, type: 3}
+  - {fileID: 2800000, guid: 7e56d7f97634cee4ab2ec7df13d889f2, type: 3}
+  - {fileID: 2800000, guid: 90a5031f9a8f97d4babe409893f9507c, type: 3}
+  - {fileID: 2800000, guid: 4904c656b3a41af4fbec6c414aa1feaf, type: 3}
+  - {fileID: 2800000, guid: 412ab20fd45a24e4788de7aef5fb9196, type: 3}
+  - {fileID: 2800000, guid: 6e02739564e6fbb47a2a8a1cb3f14a6d, type: 3}
+  - {fileID: 2800000, guid: b77e67423a06d7c449d43fd1f4a661da, type: 3}
 --- !u!1 &1736929898
 GameObject:
   m_ObjectHideFlags: 0
@@ -8796,7 +8806,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: -29}
-  m_SizeDelta: {x: 0, y: 20}
+  m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2058503708
 MonoBehaviour:
